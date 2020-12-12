@@ -466,6 +466,15 @@ class Scene4 extends Phaser.Scene{
             //colliders
             this.physics.add.collider(this.deva, this.capaItems);
             this.physics.add.collider(this.reni, this.capaItems);
+            
+            //Asignación de teclas
+            //Reni
+            this.cursors = this.input.keyboard.createCursorKeys();
+            //Deva
+            this.lefttButton = this.input.keyboard.addKey('A');
+            this.rightButton = this.input.keyboard.addKey('D');
+            this.upButton = this.input.keyboard.addKey('W');
+            this.downButton = this.input.keyboard.addKey('S');
         }
         
          update ()
