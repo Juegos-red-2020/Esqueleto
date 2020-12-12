@@ -79,9 +79,9 @@ class Scene0 extends Phaser.Scene{
         this.load.image('Vida_2', 'Assets/Vida_2.png');
         this.load.image('Vida_1', 'Assets/Vida_1.png');
         this.load.image('Vida_0', 'Assets/Vida_0.png');
-        this.load.audio('Pasos', 'media/Pasos.ogg');
-        this.load.audio('Caja', 'media/Caja_arrastrando.wav');
-        this.load.audio('Salto', 'media/Salto.ogg');
+        this.load.audio('Pasos', 'Assets/musica/Pasos.ogg');
+        this.load.audio('Caja', 'Assets/musica/Caja_arrastrando.wav');
+        this.load.audio('Salto', 'Assets/musica/Salto.ogg');
     }
     
      create ()
