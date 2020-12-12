@@ -523,6 +523,14 @@ class Scene4 extends Phaser.Scene{
                     this.sonidoDeva.stop();
         
                 }
+            
+            //Salto Deva
+                if (this.cursors.up.isDown && this.deva.body.onFloor() || this.cursors.up.isDown && this.deva.body.touching.down)
+                {
+                    this.deva.body.setVelocityY(-290);
+                    this.sonidoDeva.stop();
+                    this.sonidoSalto.play();   
+                }
         }   
          
         }
