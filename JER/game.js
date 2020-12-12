@@ -31,13 +31,14 @@ class Scene0 extends Phaser.Scene{
         
 
     });
-this.load.image('Empezar','Assets/Empezar.png');
-this.load.audio('M_Inicio','Assets/musica/Inicio.mp3');
+        
+     //ESCENA0
+        
+        this.load.image('Empezar','Assets/Empezar.png');
+        this.load.audio('M_Inicio','Assets/musica/Inicio.mp3');
 
-   
-
-//ESCENA1
-this.load.image('Titulo', 'Assets/Titulo.png');
+    //ESCENA1
+        this.load.image('Titulo', 'Assets/Titulo.png');
         this.load.image('Tutorial', 'Assets/Tutorial.png');
         this.load.image('TutorialA', 'Assets/Tutorial2.png');
         this.load.image('Jugar', 'Assets/Jugar.png');
@@ -47,10 +48,20 @@ this.load.image('Titulo', 'Assets/Titulo.png');
         this.load.image('SalirJuegoA','Assets/Salir2.png');
 
         //ESCENA2
-
+        this.load.spritesheet('Deva','Assets/Deva-Sprites.png',{frameWidth:100,frameHeight:128});
+        this.load.spritesheet('Reni','Assets/Reni-Sprites.png',{frameWidth:100,frameHeight:128});
+        this.load.image('Salir','Assets/Flecha.png');
+        this.load.image('SalirA','Assets/Flecha2.png');
+        this.load.image('TextoDeva','Assets/DevaTexto.png');
+        this.load.image('TextoReni','Assets/ReniTexto.png');
+        this.load.image('Elige','Assets/Personajes.png');
+        this.load.image('Flechas','Assets/Flechas.png');
+        this.load.image('WASD','Assets/WASD.png');
 
         //ESCENA3
 
+        this.load.image('GameOver', 'Assets/GameOver.png');
+        this.load.image('TextoGameOver','Assets/ReintentarSalir.png');
     }
     
      create ()
