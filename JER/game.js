@@ -589,7 +589,7 @@ class Scene4 extends Phaser.Scene{
                 }
         }   
          
-    
+}
     class Scene5 extends Phaser.Scene{
 
             constructor(){
@@ -787,7 +787,7 @@ class Scene4 extends Phaser.Scene{
             }
 
         }
-        }
+        
 
 
 
