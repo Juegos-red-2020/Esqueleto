@@ -75,7 +75,7 @@ class Scene0 extends Phaser.Scene{
         this.load.image('PalancaOff', 'Assets/Palanca_OFF.png');
         this.load.image('PalancaOn', 'Assets/Palanca_ON.png');
         this.load.image('Plataforma1', 'Assets/Plataforma1.png');
-        this.load.image('Vida_Completa', 'Assets/Vida_completa.png');
+        this.load.image('Vida_Completa', 'Assets/Vida_Completa.png');
         this.load.image('Vida_3', 'Assets/Vida_3.png');
         this.load.image('Vida_2', 'Assets/Vida_2.png');
         this.load.image('Vida_1', 'Assets/Vida_1.png');
