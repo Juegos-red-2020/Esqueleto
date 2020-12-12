@@ -531,6 +531,46 @@ class Scene4 extends Phaser.Scene{
                     this.sonidoDeva.stop();
                     this.sonidoSalto.play();   
                 }
+            
+            //Controles de Reni
+                if (this.lefttButton.isDown)
+                {
+                    this.reni.setVelocityX(-300);
+                    this.reni.anims.play('caminarReni', true);
+                    this.reni.flipX = true;
+
+                    if(!this.sonidoReni.isPlaying)
+                    this.sonidoReni.play();
+
+                }else if (this.rightButton.isDown)
+                {
+                    this.reni.setVelocityX(300);
+                    this.reni.anims.play('caminarReni', true);
+                    this.reni.flipX = false;
+
+
+                    if(!this.sonidoReni.isPlaying)
+                    this.sonidoReni.play();
+                }
+                else{
+                    this.reni.setVelocityX(0);
+                    this.reni.anims.play('esperaReni',true);
+                    this.sonidoReni.stop();
+                }
+
+                if (!this.reni.body.onFloor()) {
+
+                    this.sonidoReni.stop();
+        
+                }
+
+                // Salto
+                if(this.upButton.isDown && this.reni.body.onFloor()||this.upButton.isDown && this.reni.body.touching.down)
+                {
+                    this.reni.body.setVelocityY(-360);
+                    this.sonidoReni.stop();
+                    this.sonidoSalto.play();
+                }
         }   
          
         }
