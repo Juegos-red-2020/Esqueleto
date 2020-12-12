@@ -62,6 +62,26 @@ class Scene0 extends Phaser.Scene{
 
         this.load.image('GameOver', 'Assets/GameOver.png');
         this.load.image('TextoGameOver','Assets/ReintentarSalir.png');
+        
+        //ESCENA4
+        this.load.image('tilesEntorno', 'Assets/mapa/entorno.png');
+        this.load.image('tilesItems', 'Assets/mapa/items.png' );
+        this.load.tilemapTiledJSON('mapa', 'Assets/mapa/map_tutorial_1.json');
+        this.load.image('cajaOff', 'Assets/Caja_OFF_150x64.png');
+        this.load.image('Vida', 'Assets/Vida_1.png');
+        this.load.image('Fondo_Tuto_1','Assets/mapa/map_tutorial_1.png');
+        this.load.image('Portal', 'Assets/Transparencia_Portal.png');
+        this.load.image('PalancaOff', 'Assets/Palanca_OFF.png');
+        this.load.image('PalancaOn', 'Assets/Palanca_ON.png');
+        this.load.image('Plataforma1', 'Assets/Plataforma1.png');
+        this.load.image('Vida_Completa', 'Assets/Vida_completa.png');
+        this.load.image('Vida_3', 'Assets/Vida_3.png');
+        this.load.image('Vida_2', 'Assets/Vida_2.png');
+        this.load.image('Vida_1', 'Assets/Vida_1.png');
+        this.load.image('Vida_0', 'Assets/Vida_0.png');
+        this.load.audio('Pasos', 'media/Pasos.ogg');
+        this.load.audio('Caja', 'media/Caja_arrastrando.wav');
+        this.load.audio('Salto', 'media/Salto.ogg');
     }
     
      create ()
@@ -371,8 +391,55 @@ class Scene1 extends Phaser.Scene{
              
             }
 
+class Scene4 extends Phaser.Scene{
 
-
+        constructor(){
+        
+            super({key:"Mapa"});
+            
+        
+        }
+        
+        preload ()
+        {
+            
+        }
+        
+         create ()
+        {
+            this.mapa=this.make.tilemap({key:'mapa'});
+            this.fondoTutorial1 = this.physics.add.staticSprite(config.width+600,config.height/2,'Fondo_Tuto_1');
+            this.caja = this.physics.add.sprite(config.width, config.height/2, 'cajaOff');
+            this.deva = this.physics.add.sprite(100,420,'Deva');
+            this.reni = this.physics.add.sprite(150,420,'Reni');
+            this.vidas = this.physics.add.staticSprite(100, 80, 'Vida_Completa');
+            this.tilesItems = this.mapa.addTilesetImage('items', 'tilesItems');
+            this.palancaOff = this.physics.add.staticSprite(config.width-120, config.height-150, 'PalancaOff');
+            this.portal = this.physics.add.staticSprite(config.width+2092, config.height-140, 'Portal');
+            this.plataforma = this.physics.add.staticSprite(config.width-520,config.height-102,'Plataforma1');
+            
+            // Sonido de pasos
+            this.sonidoDeva = this.sound.add('Pasos',{loop: true});
+            this.sonidoReni = this.sound.add('Pasos',{loop: true});
+            //Sonido caja
+            this.sonidoCaja = this.sound.add('Caja',{loop: true});
+            //Sonido Salto
+            this.sonidoSalto = this.sound.add('Salto',{loop: false});
+            
+            //Vidas
+            this.text = this.add.text(45,20, 'Vidas :', { font: '32px fontGame', fill: '#fff' });
+            
+            //Establecer los assets de el sprite al mapa colisiones del mapa
+            this.capaItems = this.mapa.createDynamicLayer('top',this.tilesItems,0,0);
+            this.capaItems.setCollisionByExclusion([-1]);
+        }
+        
+         update ()
+        {
+            
+        }
+         
+        }
 
 
 
@@ -395,7 +462,7 @@ class Scene1 extends Phaser.Scene{
     
     },
     
-    scene: [Scene0,Scene1,Scene2,Scene3]
+    scene: [Scene0,Scene1,Scene2,Scene3,Scene4]
     
     };
 var game=new Phaser.Game(config);
