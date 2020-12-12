@@ -577,6 +577,13 @@ class Scene4 extends Phaser.Scene{
                     this.sonidoReni.stop();
                     this.sonidoSalto.play();
                 }
+            
+            //Portal
+                if(this.portal.body.touching.up && this.downButton.isDown && this.cursors.down.isDown)
+                {
+                    this.scene.start('Mapa_Final');
+                    this.sound.stopAll();
+                }
         }   
          
     
