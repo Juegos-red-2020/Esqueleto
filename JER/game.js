@@ -432,11 +432,20 @@ class Scene4 extends Phaser.Scene{
             //Establecer los assets de el sprite al mapa colisiones del mapa
             this.capaItems = this.mapa.createDynamicLayer('top',this.tilesItems,0,0);
             this.capaItems.setCollisionByExclusion([-1]);
+            
+            // Nombre de Reni
+            this.textReni = this.add.text(this.reni.body.position.x,this.reni.body.position.y, 'Reni', { font: '20px fontGame', fill: '#fff' });
+            this.textDeva = this.add.text(this.deva.body.position.x,this.deva.body.position.y, 'Deva', { font: '20px fontGame', fill: '#fff' });
         }
         
          update ()
         {
-            
+         //Nombres
+         this.textReni.x = this.reni.body.position.x + 40;
+         this.textReni.y = this.reni.body.position.y - 20;
+
+         this.textDeva.x = this.deva.body.position.x + 40;
+         this.textDeva.y = this.deva.body.position.y - 20;   
         }
          
         }
