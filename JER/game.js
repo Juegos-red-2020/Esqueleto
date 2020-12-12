@@ -588,7 +588,7 @@ class Scene4 extends Phaser.Scene{
     arcade:{
     
         gravity:{
-            y:300
+            y:500
         },
         debug: false
     
