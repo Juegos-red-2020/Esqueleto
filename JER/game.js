@@ -436,6 +436,34 @@ class Scene4 extends Phaser.Scene{
             // Nombre de Reni
             this.textReni = this.add.text(this.reni.body.position.x,this.reni.body.position.y, 'Reni', { font: '20px fontGame', fill: '#fff' });
             this.textDeva = this.add.text(this.deva.body.position.x,this.deva.body.position.y, 'Deva', { font: '20px fontGame', fill: '#fff' });
+        
+            // Deva camina
+                this.anims.create({ 
+                    key: 'caminarDeva',
+                    frames: this.anims.generateFrameNumbers('Deva'),
+                    frameRate: 14,
+                repeat: -1});
+
+                this.anims.create({
+                    key: 'esperaDeva',
+                    frames: [ { key: 'Deva', frame: 3 } ],
+                    frameRate: 28
+                });
+
+                // Reni Camina
+                this.anims.create({ 
+                    key: 'caminarReni',
+                    frames: this.anims.generateFrameNumbers('Reni'),
+                    frameRate: 14,
+                repeat: -1});
+
+                this.anims.create({
+                    key: 'esperaReni',
+                    frames: [ { key: 'Reni', frame: 3 } ],
+                    frameRate: 28
+                });
+            
+            
         }
         
          update ()
