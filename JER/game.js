@@ -83,6 +83,7 @@ class Scene0 extends Phaser.Scene{
         this.load.audio('Pasos', 'Assets/musica/Pasos.ogg');
         this.load.audio('Caja', 'Assets/musica/Caja_arrastrando.wav');
         this.load.audio('Salto', 'Assets/musica/Salto.ogg');
+        this.load.audio('Portal_sound', 'Assets/musica/teleport_02.ogg');
         
         //ESCENA5
         this.load.image('tilesEntorno1', 'Assets/mapa/Tiles_Entorno.png');
@@ -431,6 +432,8 @@ class Scene4 extends Phaser.Scene{
             this.sonidoCaja = this.sound.add('Caja',{loop: true});
             //Sonido Salto
             this.sonidoSalto = this.sound.add('Salto',{loop: false});
+            //Sonido Portal
+            this.sonidoPortal = this.sound.add('Portal_sound',{loop: false});
             
             //Vidas
             this.text = this.add.text(45,20, 'Vidas :', { font: '32px fontGame', fill: '#fff' });
@@ -581,8 +584,8 @@ class Scene4 extends Phaser.Scene{
             //Portal
                 if(this.portal.body.touching.up && this.downButton.isDown && this.cursors.down.isDown)
                 {
+                    this.sonidoPortal.play();
                     this.scene.start('Mapa_Final');
-                    this.sound.stopAll();
                 }
         }   
          
