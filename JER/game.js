@@ -475,6 +475,11 @@ class Scene4 extends Phaser.Scene{
             this.rightButton = this.input.keyboard.addKey('D');
             this.upButton = this.input.keyboard.addKey('W');
             this.downButton = this.input.keyboard.addKey('S');
+            
+            //Para que la camara no se pasa del mapa
+            this.cameras.main.setBounds(0, 0, this.mapa.widthInPixels, this.mapa.heightInPixels);
+            //La camara sigue a Reni
+            this.cameras.main.startFollow(this.reni);
         }
         
          update ()
