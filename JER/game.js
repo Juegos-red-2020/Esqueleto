@@ -463,7 +463,9 @@ class Scene4 extends Phaser.Scene{
                     frameRate: 28
                 });
             
-            
+            //colliders
+            this.physics.add.collider(this.deva, this.capaItems);
+            this.physics.add.collider(this.reni, this.capaItems);
         }
         
          update ()
