@@ -489,8 +489,41 @@ class Scene4 extends Phaser.Scene{
          this.textReni.y = this.reni.body.position.y - 20;
 
          this.textDeva.x = this.deva.body.position.x + 40;
-         this.textDeva.y = this.deva.body.position.y - 20;   
-        }
+         this.textDeva.y = this.deva.body.position.y - 20;
+            
+         //Controles Deva
+                if (this.cursors.left.isDown)
+                {
+                    this.deva.setVelocityX(-300);
+                    this.deva.anims.play('caminarDeva', true);
+                    this.deva.flipX = true;
+
+                    if(!this.sonidoDeva.isPlaying)
+                    this.sonidoDeva.play();
+                    //this.sonidoDeva.play();
+                }
+                else if (this.cursors.right.isDown)
+                {
+                    this.deva.setVelocityX(300);
+                    this.deva.anims.play('caminarDeva', true);
+                    this.deva.flipX = false;
+
+                    if(!this.sonidoDeva.isPlaying)
+                    this.sonidoDeva.play();
+                }
+                else if (this.cursors.right.isUp)
+                {
+                    this.deva.setVelocityX(0);
+                    this.deva.anims.play('esperaDeva',true);
+                    this.sonidoDeva.stop();
+                }
+
+                if (!this.deva.body.onFloor()) {
+
+                    this.sonidoDeva.stop();
+        
+                }
+        }   
          
         }
 
