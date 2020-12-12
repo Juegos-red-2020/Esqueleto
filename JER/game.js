@@ -68,7 +68,7 @@ class Scene0 extends Phaser.Scene{
         this.load.image('tilesItems', 'Assets/mapa/items.png' );
         this.load.tilemapTiledJSON('mapa', 'Assets/mapa/map_tutorial_1.json');
         this.load.image('cajaOff', 'Assets/Caja_OFF_150x64.png');
-        this.load.image('cajaOn', 'Assets/Caja_ON_150x95.png');
+        this.load.image('cajaOn', 'Assets/Caja_ON_150x64.png');
         this.load.image('Vida', 'Assets/Vida_1.png');
         this.load.image('Fondo_Tuto_1','Assets/mapa/map_tutorial_1.png');
         this.load.image('Portal', 'Assets/Transparencia_Portal.png');
