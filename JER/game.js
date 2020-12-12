@@ -68,6 +68,7 @@ class Scene0 extends Phaser.Scene{
         this.load.image('tilesItems', 'Assets/mapa/items.png' );
         this.load.tilemapTiledJSON('mapa', 'Assets/mapa/map_tutorial_1.json');
         this.load.image('cajaOff', 'Assets/Caja_OFF_150x64.png');
+        this.load.image('cajaOn', 'Assets/Caja_ON_150x95.png');
         this.load.image('Vida', 'Assets/Vida_1.png');
         this.load.image('Fondo_Tuto_1','Assets/mapa/map_tutorial_1.png');
         this.load.image('Portal', 'Assets/Transparencia_Portal.png');
@@ -82,6 +83,11 @@ class Scene0 extends Phaser.Scene{
         this.load.audio('Pasos', 'Assets/musica/Pasos.ogg');
         this.load.audio('Caja', 'Assets/musica/Caja_arrastrando.wav');
         this.load.audio('Salto', 'Assets/musica/Salto.ogg');
+        
+        //ESCENA5
+        this.load.image('tilesEntorno1', 'Assets/mapa/Tiles_Entorno.png');
+        this.load.tilemapTiledJSON('mapa1', 'Assets/mapa/map_Grande.json');
+        this.load.image('Fondo_1','Assets/mapa/map_Grande.png');
     }
     
      create ()
@@ -573,6 +579,204 @@ class Scene4 extends Phaser.Scene{
                 }
         }   
          
+    
+    class Scene5 extends Phaser.Scene{
+
+            constructor(){
+            
+                super({key:"Mapa_Final"});
+            }
+            
+            preload ()
+            {
+            }
+
+            
+             create ()
+            {   
+                
+                this.mapa=this.make.tilemap({key:'mapa1'});
+                this.fondo1 = this.physics.add.staticSprite(config.width+1895,config.height+1048,'Fondo_1');
+                this.caja = this.physics.add.sprite(config.width+300, config.height/2, 'cajaOff');
+                this.deva = this.physics.add.sprite(100,420,'Deva');
+                this.reni = this.physics.add.sprite(150,420,'Reni');
+                this.vidas = this.physics.add.staticSprite(45, 80, 'Vida');
+                this.tilesItems = this.mapa.addTilesetImage('items' , 'tilesItems');
+                this.portal = this.physics.add.staticSprite(config.width+5000, config.height+5000, 'Portal');
+
+                // Sonido de pasos
+                this.sonidoDeva = this.sound.add('Pasos',{loop: true});
+                this.sonidoReni = this.sound.add('Pasos',{loop: true});
+                //Sonido caja
+                this.sonidoCaja = this.sound.add('Caja',{loop: true});
+                //Sonido Salto
+                this.sonidoSalto = this.sound.add('Salto',{loop: false});
+
+                //Vidas
+                this.vidas = this.add.group();
+                for (var i = 0; i < 4; i++) 
+                {
+                    this.corazones = this.vidas.create(45 + (40 * i), 80, 'Vida');
+                }
+
+                this.capaItems = this.mapa.createDynamicLayer('top',this.tilesItems,0,0);
+                this.capaItems.setCollisionByExclusion([-1]);   
+
+                // Nombre de Reni
+                this.textReni = this.add.text(this.reni.body.position.x,this.reni.body.position.y, 'Reni', { font: '20px fontGame', fill: '#fff' });
+                this.textDeva = this.add.text(this.deva.body.position.x,this.deva.body.position.y, 'Deva', { font: '20px fontGame', fill: '#fff' });
+
+                // Deva camina
+                this.anims.create({ 
+                    key: 'caminarDeva',
+                    frames: this.anims.generateFrameNumbers('Deva'),
+                    frameRate: 18,
+                repeat: -1});
+
+                this.anims.create({
+                    key: 'esperaDeva',
+                    frames: [ { key: 'Deva', frame: 3 } ],
+                    frameRate: 28
+                });
+
+                // Reni Camina
+                this.anims.create({ 
+                    key: 'caminarReni',
+                    frames: this.anims.generateFrameNumbers('Reni'),
+                    frameRate: 18,
+                repeat: -1});
+
+                this.anims.create({
+                    key: 'esperaReni',
+                    frames: [ { key: 'Reni', frame: 3 } ],
+                    frameRate: 28
+                });
+
+                //colliders
+                this.physics.add.collider(this.deva, this.capaItems);
+                this.physics.add.collider(this.reni, this.capaItems);
+
+                this.cursors = this.input.keyboard.createCursorKeys();
+
+                this.lefttButton = this.input.keyboard.addKey('A');
+                this.rightButton = this.input.keyboard.addKey('D');
+                this.upButton = this.input.keyboard.addKey('W');
+                this.downButton = this.input.keyboard.addKey('S');
+
+                //Para que la camara no se pasa del mapa
+                this.cameras.main.setBounds(0, 0, this.mapa.widthInPixels, this.mapa.heightInPixels);
+                //La camara sigue a Reni
+                this.cameras.main.startFollow(this.reni);
+                
+                //Vidas
+                this.text = this.add.text(45,20, 'Vidas :', { font: '32px fontGame', fill: '#fff' });
+
+            }
+
+            update ()
+            {
+                //Nombres
+                this.textReni.x = this.reni.body.position.x + 40;
+                this.textReni.y = this.reni.body.position.y - 20;
+
+                this.textDeva.x = this.deva.body.position.x + 40;
+                this.textDeva.y = this.deva.body.position.y - 20;
+
+                //Controles Deva
+                if (this.cursors.left.isDown)
+                {
+                    this.deva.setVelocityX(-300);
+                    this.deva.anims.play('caminarDeva', true);
+                    this.deva.flipX = true;
+
+                    if(!this.sonidoDeva.isPlaying)
+                    this.sonidoDeva.play();
+                    //this.sonidoDeva.play();
+                }
+                else if (this.cursors.right.isDown)
+                {
+                    this.deva.setVelocityX(300);
+                    this.deva.anims.play('caminarDeva', true);
+                    this.deva.flipX = false;
+
+                    if(!this.sonidoDeva.isPlaying)
+                    this.sonidoDeva.play();
+                }
+                else if (this.cursors.right.isUp)
+                {
+                    this.deva.setVelocityX(0);
+                    this.deva.anims.play('esperaDeva',true);
+                    this.sonidoDeva.stop();
+                }
+
+                if (!this.deva.body.onFloor()) {
+
+                    this.sonidoDeva.stop();
+        
+                }
+
+                //Salto
+                if (this.cursors.up.isDown && this.deva.body.onFloor() || this.cursors.up.isDown && this.deva.body.touching.down)
+                {
+                    this.deva.body.setVelocityY(-290);
+                    this.sonidoDeva.stop();
+                    this.sonidoSalto.play();   
+                }
+
+                if((this.caja.body.touching.left&&this.rightButton.isDown) || (this.caja.body.touching.right&&this.lefttButton.isDown))
+                {
+
+                    if(!this.sonidoCaja.isPlaying)
+                    this.sonidoCaja.play();
+
+                }else
+                {
+                    this.sonidoCaja.stop();
+                }
+
+                //Controles de Reni
+                if (this.lefttButton.isDown)
+                {
+                    this.reni.setVelocityX(-300);
+                    this.reni.anims.play('caminarReni', true);
+                    this.reni.flipX = true;
+
+                    if(!this.sonidoReni.isPlaying)
+                    this.sonidoReni.play();
+
+                }else if (this.rightButton.isDown)
+                {
+                    this.reni.setVelocityX(300);
+                    this.reni.anims.play('caminarReni', true);
+                    this.reni.flipX = false;
+
+
+                    if(!this.sonidoReni.isPlaying)
+                    this.sonidoReni.play();
+                }
+                else{
+                    this.reni.setVelocityX(0);
+                    this.reni.anims.play('esperaReni',true);
+                    this.sonidoReni.stop();
+                }
+
+                if (!this.reni.body.onFloor()) {
+
+                    this.sonidoReni.stop();
+        
+                }
+
+                // Salto
+                if(this.upButton.isDown && this.reni.body.onFloor()||this.upButton.isDown && this.reni.body.touching.down)
+                {
+                    this.reni.body.setVelocityY(-360);
+                    this.sonidoReni.stop();
+                    this.sonidoSalto.play();
+                }
+                
+            }
+
+        }
         }
 
 
@@ -596,7 +800,7 @@ class Scene4 extends Phaser.Scene{
     
     },
     
-    scene: [Scene0,Scene1,Scene2,Scene3,Scene4]
+    scene: [Scene0,Scene1,Scene2,Scene3,Scene4,Scene5]
     
     };
 var game=new Phaser.Game(config);
