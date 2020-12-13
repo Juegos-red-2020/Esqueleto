@@ -84,6 +84,10 @@ class Scene0 extends Phaser.Scene{
         this.load.audio('Caja', 'Assets/musica/Caja_arrastrando.wav');
         this.load.audio('Salto', 'Assets/musica/Salto.ogg');
         this.load.audio('Portal_sound', 'Assets/musica/teleport_02.ogg');
+        this.load.image('Boton_off','Assets/boton_off.png');
+        this.load.image('Boton_on','Assets/boton_on.png');
+        this.load.image('Escalera','Assets/Escalera.png');
+        this.load.image('Laser','Assets/Laser.png');
         
         //ESCENA5
         this.load.image('tilesEntorno1', 'Assets/mapa/Tiles_Entorno.png');
@@ -409,22 +413,30 @@ class Scene4 extends Phaser.Scene{
         
         preload ()
         {
-            
+           
         }
         
          create ()
-        {
+        {   
             this.mapa=this.make.tilemap({key:'mapa'});
             this.fondoTutorial1 = this.physics.add.staticSprite(config.width+600,config.height/2,'Fondo_Tuto_1');
             this.caja = this.physics.add.sprite(config.width, config.height/2, 'cajaOff');
+            this.caja.visible=false;
+            this.caja.body.enable=false;
+            this.caja.setDrag(10000,0);
             this.deva = this.physics.add.sprite(100,420,'Deva');
             this.reni = this.physics.add.sprite(150,420,'Reni');
             this.vidas = this.physics.add.staticSprite(100, 80, 'Vida_Completa');
             this.tilesItems = this.mapa.addTilesetImage('items', 'tilesItems');
-            this.palancaOff = this.physics.add.staticSprite(config.width-120, config.height-150, 'PalancaOff');
+            this.palancaOff = this.physics.add.staticSprite(1400, config.height-150, 'PalancaOff');
             this.portal = this.physics.add.staticSprite(config.width+2092, config.height-140, 'Portal');
             this.plataforma = this.physics.add.staticSprite(config.width-520,config.height-102,'Plataforma1');
-            
+            this.plataforma.visible=false;
+            this.plataforma.body.enable=false;
+            this.boton_off= this.physics.add.staticImage(800,472,'Boton_off');
+            //this.escalera=this.physics.add.staticImage(850,450,'Escalera');
+            //this.escalera.body.enable=false;
+            //this.escalera.visible=false;
             // Sonido de pasos
             this.sonidoDeva = this.sound.add('Pasos',{loop: true});
             this.sonidoReni = this.sound.add('Pasos',{loop: true});
@@ -432,8 +444,6 @@ class Scene4 extends Phaser.Scene{
             this.sonidoCaja = this.sound.add('Caja',{loop: true});
             //Sonido Salto
             this.sonidoSalto = this.sound.add('Salto',{loop: false});
-            //Sonido Portal
-            this.sonidoPortal = this.sound.add('Portal_sound',{loop: false});
             
             //Vidas
             this.text = this.add.text(45,20, 'Vidas :', { font: '32px fontGame', fill: '#fff' });
@@ -471,11 +481,24 @@ class Scene4 extends Phaser.Scene{
                     frames: [ { key: 'Reni', frame: 3 } ],
                     frameRate: 28
                 });
+               
+             
             
             //colliders
             this.physics.add.collider(this.deva, this.capaItems);
             this.physics.add.collider(this.reni, this.capaItems);
+            this.physics.add.collider(this.caja, this.capaItems);
+            this.physics.add.collider(this.caja, this.deva);
+            this.physics.add.collider(this.reni, this.plataforma);
+            this.physics.add.collider(this.plataforma, this.deva);
+
             
+            //overlaps
+            this.physics.add.overlap(this.reni,this.boton_off);
+            this.physics.add.overlap(this.reni,this.palancaOff);
+            this.physics.add.overlap(this.deva,this.palancaOff);
+
+
             //Asignación de teclas
             //Reni
             this.cursors = this.input.keyboard.createCursorKeys();
@@ -489,6 +512,8 @@ class Scene4 extends Phaser.Scene{
             this.cameras.main.setBounds(0, 0, this.mapa.widthInPixels, this.mapa.heightInPixels);
             //La camara sigue a Reni
             this.cameras.main.startFollow(this.reni);
+
+
         }
         
          update ()
@@ -499,11 +524,22 @@ class Scene4 extends Phaser.Scene{
 
          this.textDeva.x = this.deva.body.position.x + 40;
          this.textDeva.y = this.deva.body.position.y - 20;
+
+         //activar boton 
+         if(this.boton_off.body.touching.up){
+            this.boton_on=this.physics.add.staticImage(800,472,'Boton_on');
+            this.boton_off.body.enable=false;
+            this.boton_off.visible=false;
+            this.caja.visible=true;
+            this.caja.body.enable=true;
+         }
             
          //Controles Deva
+
+               
                 if (this.cursors.left.isDown)
                 {
-                    this.deva.setVelocityX(-300);
+                    this.deva.setVelocityX(-200);
                     this.deva.anims.play('caminarDeva', true);
                     this.deva.flipX = true;
 
@@ -513,7 +549,7 @@ class Scene4 extends Phaser.Scene{
                 }
                 else if (this.cursors.right.isDown)
                 {
-                    this.deva.setVelocityX(300);
+                    this.deva.setVelocityX(200);
                     this.deva.anims.play('caminarDeva', true);
                     this.deva.flipX = false;
 
@@ -536,12 +572,22 @@ class Scene4 extends Phaser.Scene{
             //Salto Deva
                 if (this.cursors.up.isDown && this.deva.body.onFloor() || this.cursors.up.isDown && this.deva.body.touching.down)
                 {
-                    this.deva.body.setVelocityY(-290);
+                    this.deva.body.setVelocityY(-250);
                     this.sonidoDeva.stop();
                     this.sonidoSalto.play();   
                 }
             
             //Controles de Reni
+            if(this.deva.y>620){
+                this.deva.x=150;
+                this.deva.y=400;
+
+            }
+                if(this.reni.y>620){
+                    this.reni.x=150;
+                    this.reni.y=420;
+
+                }
                 if (this.lefttButton.isDown)
                 {
                     this.reni.setVelocityX(-300);
@@ -580,8 +626,17 @@ class Scene4 extends Phaser.Scene{
                     this.sonidoReni.stop();
                     this.sonidoSalto.play();
                 }
-            
-            //Portal
+                if(this.upButton.isDown && this.reni.body.onWall()){
+                    this.reni.body.setVelocityY(-200);
+                   }
+                if(this.palancaOff.body.touching.up)
+                {
+                    this.palancaOn = this.physics.add.staticSprite(1400, config.height-150, 'PalancaOn');
+                    this.palancaOff.body.enable = false;
+                    this.palancaOff.visible = false;
+                    this.plataforma.body.enable = true;
+                    this.plataforma.visible = true;
+                }
                 if(this.portal.body.touching.up && this.downButton.isDown && this.cursors.down.isDown)
                 {
                     this.sonidoPortal.play();
@@ -589,7 +644,7 @@ class Scene4 extends Phaser.Scene{
                 }
         }   
          
-}
+        }
     class Scene5 extends Phaser.Scene{
 
             constructor(){
