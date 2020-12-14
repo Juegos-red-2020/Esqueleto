@@ -579,10 +579,19 @@ class Scene4 extends Phaser.Scene{
          {
              this.img_tuto_portal.visible = true;
          }
+         
+         //Sonido al empujar la caja
+        if((this.caja.body.touching.left&&this.cursors.right.isDown) || (this.caja.body.touching.right&&this.cursors.left.isDown))
+        {
+            if(!this.sonidoCaja.isPlaying)
+            this.sonidoCaja.play()
+        }
+        else
+        {
+            this.sonidoCaja.stop();
+        }
             
          //Controles Deva
-
-               
                 if (this.cursors.left.isDown)
                 {
                     this.deva.setVelocityX(-250);
