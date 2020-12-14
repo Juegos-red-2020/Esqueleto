@@ -92,7 +92,8 @@ class Scene0 extends Phaser.Scene{
         this.load.image('Boton_off','Assets/boton_off.png');
         this.load.image('Boton_on','Assets/boton_on.png');
         this.load.image('Escalera','Assets/Escalera.png');
-        this.load.image('Laser','Assets/Laser.png');
+        this.load.image('Laser','Assets/laser.png');
+        this.load.image('LaserH','Assets/laserHorizontal.png');
         this.load.image('img_tuto_abajo','Assets/flecha_abajo_reni.png');
         this.load.image('img_tuto_portal','Assets/tuto_portal.png');
         this.load.image('img_tuto_empujar','Assets/tuto_empujar_caja.png');
@@ -101,6 +102,11 @@ class Scene0 extends Phaser.Scene{
         this.load.image('tilesEntorno1', 'Assets/mapa/Tiles_Entorno.png');
         this.load.tilemapTiledJSON('mapa1', 'Assets/mapa/map_Grande.json');
         this.load.image('Fondo_1','Assets/mapa/map_Grande.png');
+        this.load.image('Plataforma1','Assets/plataforma_1_5_6_8.png');
+        this.load.image('Plataforma2','Assets/plataforma_2.png');
+        this.load.image('Plataforma3','Assets/plataforma_3.png');
+        this.load.image('Plataforma4','Assets/plataforma_4.png');
+        this.load.image('Plataforma7','Assets/plataforma_7.png');
         
         //ESCENA6
         this.load.image('Dis', 'Assets/Dis.png');
@@ -712,9 +718,11 @@ class Scene4 extends Phaser.Scene{
         }   
          
         }
-    class Scene5 extends Phaser.Scene{
+   class Scene5 extends Phaser.Scene{
+    
 
             constructor(){
+               
             
                 super({key:"Mapa_Final"});
             }
@@ -727,14 +735,221 @@ class Scene4 extends Phaser.Scene{
              create ()
             {   
                 
-                this.mapa=this.make.tilemap({key:'mapa1'});
+               
+
+                
+
+                this.mapa=this.make.tilemap({key:'mapa1'});     
+
                 this.fondo1 = this.physics.add.staticSprite(config.width+1895,config.height+1048,'Fondo_1');
-                this.caja = this.physics.add.sprite(config.width+300, config.height/2, 'cajaOff');
-                this.deva = this.physics.add.sprite(100,420,'Deva');
-                this.reni = this.physics.add.sprite(150,420,'Reni');
+
+                this.deva = this.physics.add.sprite(330,500,'Deva');
+                this.deva.body.setSize(this.deva.width-30, this.deva.height);
+                this.reni = this.physics.add.sprite(330,500,'Reni');
+                this.reni.body.setSize(this.reni.width-30, this.reni.height);
+
                 this.vidas = this.physics.add.staticSprite(45, 80, 'Vida');
+
                 this.tilesItems = this.mapa.addTilesetImage('items' , 'tilesItems');
-                this.portal = this.physics.add.staticSprite(config.width+5000, config.height+5000, 'Portal');
+
+                this.portal = this.physics.add.staticImage(4020, 3220, 'Portal');
+                this.sonidoPortal=this.sound.add('Portal_sound',{loop:false});
+
+                this.caja1=this.physics.add.sprite(1190, 544, 'cajaOff');
+                this.caja1.setDrag(10000,0);
+                this.caja2=this.physics.add.sprite(480, 928, 'cajaOff');
+                this.caja2.setDrag(10000,0);
+                this.caja3=this.physics.add.sprite(254, 1600, 'cajaOff');
+                this.caja3.setDrag(10000,0);
+                this.caja4=this.physics.add.sprite(1696,1600, 'cajaOff');
+                this.caja4.setDrag(10000,0);
+                this.caja5=this.physics.add.sprite(5184,2592, 'cajaOff');
+                this.caja5.setDrag(10000,0);
+
+                this.boton1off=this.physics.add.staticImage(3994,1172,'Boton_off');
+                this.boton1on=this.physics.add.staticImage(3994,1172,'Boton_on');
+                this.boton1on.visible=false;
+                this.boton1on.body.enable=false;
+                this.boton2off=this.physics.add.staticImage(544,1620,'Boton_off');
+                this.boton2on=this.physics.add.staticImage(544,1620,'Boton_on');
+                this.boton2on.visible=false;
+                this.boton2on.body.enable=false;
+                this.boton3off=this.physics.add.staticImage(3104,3220,'Boton_off');
+                this.boton3on=this.physics.add.staticImage(3104,3220,'Boton_on');
+                this.boton3on.visible=false;
+                this.boton3on.body.enable=false;
+                this.boton4off=this.physics.add.staticImage(4672,3220,'Boton_off');
+                this.boton4on=this.physics.add.staticImage(4672,3220,'Boton_on');
+                this.boton4on.visible=false;
+                this.boton4on.body.enable=false;
+                this.boton5off=this.physics.add.staticImage(2550,565,'Boton_off');
+                this.boton5on=this.physics.add.staticImage(2550,565,'Boton_on');
+                this.boton5on.visible=false;
+                this.boton5on.body.enable=false;
+
+                this.plataforma1=this.physics.add.staticImage(1142,980,'Plataforma3');
+                this.plataforma1.visible=false;
+                this.plataforma1.body.enable=false;
+                this.plataforma2=this.physics.add.staticImage(1728,593,'Plataforma2');
+                this.plataforma2.visible=false;
+                this.plataforma2.body.enable=false;
+                this.plataforma3=this.physics.add.staticImage(3500,980,'Plataforma3');
+                this.plataforma3.visible=false;
+                this.plataforma3.body.enable=false;
+                this.plataforma4=this.physics.add.staticImage(4255,980,'Plataforma4');
+                this.plataforma4.visible=false;
+                this.plataforma4.body.enable=false;
+                this.plataforma5=this.physics.add.staticImage(1142,1652,'Plataforma3');
+                this.plataforma5.visible=false;
+                this.plataforma5.body.enable=false;
+                this.plataforma6=this.physics.add.staticImage(1142,2195,'Plataforma3');
+                this.plataforma6.visible=false;
+                this.plataforma6.body.enable=false;
+                this.plataforma8=this.physics.add.staticImage(1155,3250,'Plataforma3');
+                this.plataforma8.visible=false;
+                this.plataforma8.body.enable=false;
+                this.plataforma7=this.physics.add.staticImage(810,3085,'Plataforma7');
+                this.plataforma9=this.physics.add.staticImage(4700,1600,'Plataforma3');
+                this.plataforma10=this.physics.add.staticImage(800,2050,'Plataforma7');
+                this.plataforma11=this.physics.add.staticImage(1506,2070,'Plataforma7');
+                this.plataforma12=this.physics.add.staticImage(1506,3150,'Plataforma7');
+                this.plataforma13=this.physics.add.staticImage(242,2195,'Plataforma3');
+
+              
+
+                this.palanca1Off = this.physics.add.staticSprite(1536, 928, 'PalancaOff');
+                this.palanca1On = this.physics.add.staticSprite(1536, 928, 'PalancaOn');
+                this.palanca1On.visible=false;
+                this.palanca1On.body.enable=false;
+                this.palanca2Off = this.physics.add.staticSprite(3870, 545, 'PalancaOff');
+                this.palanca2On = this.physics.add.staticSprite(3870, 545, 'PalancaOn');
+                this.palanca2On.visible=false;
+                this.palanca2On.body.enable=false;
+                this.palanca3Off = this.physics.add.staticSprite(1566, 2144, 'PalancaOff');
+                this.palanca3On = this.physics.add.staticSprite(1566, 2144, 'PalancaOn');
+                this.palanca3On.visible=false;
+                this.palanca3On.body.enable=false;
+                this.palanca4Off = this.physics.add.staticSprite(704, 3200, 'PalancaOff');
+                this.palanca4On = this.physics.add.staticSprite(704, 3200, 'PalancaOn');
+                this.palanca4On.visible=false;
+                this.palanca4On.body.enable=false;
+
+                this.escalera1=this.physics.add.staticImage(286,788,'Escalera');
+                this.escalera2=this.physics.add.staticImage(2080,788,'Escalera');
+                this.escalera3=this.physics.add.staticImage(5248,788,'Escalera');
+                this.escalera4=this.physics.add.staticImage(132,3060,'Escalera');
+                this.escalera5=this.physics.add.staticImage(1568,3060,'Escalera');
+                this.escalera6=this.physics.add.staticImage(672,2708,'Escalera');
+                this.escalera7=this.physics.add.staticImage(672,2356,'Escalera');
+                this.escalera8=this.physics.add.staticImage(2336,2708,'Escalera');
+                this.escalera9=this.physics.add.staticImage(2336,2356,'Escalera');
+                this.escalera10=this.physics.add.staticImage(5536,3060,'Escalera');
+                this.escalera11=this.physics.add.staticImage(5536,2708,'Escalera');
+                this.escalera11=this.physics.add.staticImage(4950,1100,'Escalera');
+                this.escalera12=this.physics.add.staticImage(4950,1450,'Escalera');
+                this.escalera13=this.physics.add.staticImage(132,1800,'Escalera');
+                this.escalera14=this.physics.add.staticImage(132,2100,'Escalera');
+
+                this.laser=this.physics.add.image(1550,657,'LaserH');
+                this.laser.setBounceX(1);
+                this.laser.body.setAllowGravity(false);
+                this.laser.setVelocityX(500);
+
+                this.laser1=this.physics.add.image(2668,657,'LaserH');
+                this.laser1.body.setAllowGravity(false);
+                this.laser1.setBounceX(1);
+                this.laser1.setVelocityX(500);
+
+                this.laser2=this.physics.add.image(3360,657,'LaserH');
+                this.laser2.body.setAllowGravity(false);
+                this.laser2.setBounceX(1);
+                this.laser2.setVelocityX(500);
+
+                this.laser3=this.physics.add.image(3136,1044,'LaserH');
+                this.laser3.body.setAllowGravity(false);
+                this.laser3.setBounceX(1);
+                this.laser3.setScale(2);
+                this.laser3.setVelocityX(1000);
+
+                this.laser4=this.physics.add.image(700,2324,'LaserH');
+                this.laser4.body.setAllowGravity(false);
+                this.laser4.setBounceX(1);
+                this.laser4.setVelocityX(300);
+
+                this.laser5=this.physics.add.image(32,2484,'LaserH');
+                this.laser5.body.setAllowGravity(false);
+                this.laser5.setBounceX(1);
+                this.laser5.setVelocityX(300);
+
+                this.laser6=this.physics.add.image(700,2644,'LaserH');
+                this.laser6.body.setAllowGravity(false);
+                this.laser6.setBounceX(1);
+                this.laser6.setVelocityX(300);
+
+                this.laser7=this.physics.add.image(4600,2224,'LaserH');
+                this.laser7.body.setAllowGravity(false);
+                this.laser7.setBounceX(1);
+                this.laser7.setVelocityX(500);
+
+                this.laser8=this.physics.add.image(4700,1134,'LaserH');
+                this.laser8.body.setAllowGravity(false);
+                this.laser8.setBounceX(1);
+                this.laser8.setVelocityX(300);
+
+                this.laser9=this.physics.add.image(5400,2036,'LaserH');
+                this.laser9.body.setAllowGravity(false);
+                this.laser9.setBounceX(1);
+                this.laser9.setVelocityX(500);
+
+                this.laserv1=this.physics.add.image(788,1022,'Laser');
+                this.laserv1.setBounceY(1);
+                this.laserv1.setScale(2);
+                this.laserv1.setVelocityY(1000);
+
+                this.laserv2=this.physics.add.image(1864,1662,'Laser');
+                this.laserv2.setBounceY(1);
+                this.laserv2.setVelocityY(50);
+
+                this.laserv4=this.physics.add.image(3220,1920,'Laser');
+                this.laserv4.setBounceY(1);
+                this.laserv4.setVelocityY(1000);
+
+                this.laserv5=this.physics.add.image(3732,2000,'Laser');
+                this.laserv5.setBounceY(1);
+                this.laserv5.setVelocityY(1000);
+
+                this.laserv6=this.physics.add.image(4308,1256,'Laser');
+                this.laserv6.setBounceY(1);
+                this.laserv6.setVelocityY(1000);
+
+                this.laserv7=this.physics.add.image(5236,1406,'Laser');
+                this.laserv7.setBounceY(1);
+                this.laserv7.setVelocityY(1000);
+
+                this.laserv8=this.physics.add.image(1708,2506,'Laser');
+                this.laserv8.setBounceY(1);
+                this.laserv8.setVelocityY(-500);
+
+                this.laserv10=this.physics.add.image(2688,2506,'Laser');
+                this.laserv10.setBounceY(1);
+                this.laserv10.setScale(2);
+                this.laserv10.setVelocityY(500);
+
+                this.laserv11=this.physics.add.image(3688,2506,'Laser');
+                this.laserv11.setBounceY(1);
+                this.laserv11.setScale(2);
+                this.laserv11.setVelocityY(500);
+
+                this.laserv12=this.physics.add.image(4384,2506,'Laser');
+                this.laserv12.setBounceY(1);
+                this.laserv12.setScale(2);
+                this.laserv12.setVelocityY(500);
+
+
+
+
+               
+               
 
                 // Sonido de pasos
                 this.sonidoDeva = this.sound.add('Pasos',{loop: true});
@@ -788,12 +1003,220 @@ class Scene4 extends Phaser.Scene{
                 this.physics.add.collider(this.deva, this.capaItems);
                 this.physics.add.collider(this.reni, this.capaItems);
 
+                this.physics.add.collider(this.laser, this.capaItems);
+                this.physics.add.collider(this.laser1, this.capaItems);
+                this.physics.add.collider(this.laser2, this.capaItems);
+                this.physics.add.collider(this.laser3, this.capaItems);
+                this.physics.add.collider(this.laser4, this.capaItems);
+                this.physics.add.collider(this.laser5, this.capaItems);
+                this.physics.add.collider(this.laser6, this.capaItems);
+                this.physics.add.collider(this.laser7, this.capaItems);
+                this.physics.add.collider(this.laser8, this.capaItems);
+                this.physics.add.collider(this.laser9, this.capaItems);
+
+                this.physics.add.collider(this.deva, this.plataforma1);
+                this.physics.add.collider(this.reni, this.plataforma1);
+                this.physics.add.collider(this.deva, this.plataforma3);
+                this.physics.add.collider(this.reni, this.plataforma3);
+                this.physics.add.collider(this.deva, this.plataforma4);
+                this.physics.add.collider(this.reni, this.plataforma4);
+                this.physics.add.collider(this.deva, this.plataforma5);
+                this.physics.add.collider(this.reni, this.plataforma5);
+                this.physics.add.collider(this.reni, this.plataforma6);
+                this.physics.add.collider(this.deva, this.plataforma6);
+                this.physics.add.collider(this.deva, this.plataforma8);
+                this.physics.add.collider(this.reni, this.plataforma8);
+                this.physics.add.collider(this.deva, this.plataforma7);
+                this.physics.add.collider(this.reni, this.plataforma7);
+                this.physics.add.collider(this.deva, this.plataforma2);
+                this.physics.add.collider(this.reni, this.plataforma2);
+                this.physics.add.collider(this.deva, this.plataforma9);
+                this.physics.add.collider(this.reni, this.plataforma9);
+                this.physics.add.collider(this.deva, this.plataforma10);
+                this.physics.add.collider(this.reni, this.plataforma10);
+                this.physics.add.collider(this.deva, this.plataforma11);
+                this.physics.add.collider(this.reni, this.plataforma11);
+                this.physics.add.collider(this.deva, this.plataforma12);
+                this.physics.add.collider(this.reni, this.plataforma12);
+                this.physics.add.collider(this.deva, this.plataforma13);
+                this.physics.add.collider(this.reni, this.plataforma13);
+
+
+                this.physics.add.collider(this.caja1, this.plataforma1);
+                this.physics.add.collider(this.caja2, this.plataforma1);
+                this.physics.add.collider(this.caja3, this.plataforma1);
+                this.physics.add.collider(this.caja4, this.plataforma1);
+                this.physics.add.collider(this.caja5, this.plataforma1);
+
+                this.physics.add.collider(this.caja1, this.plataforma2);
+                this.physics.add.collider(this.caja2, this.plataforma2);
+                this.physics.add.collider(this.caja3, this.plataforma2);
+                this.physics.add.collider(this.caja4, this.plataforma2);
+                this.physics.add.collider(this.caja5, this.plataforma2);
+
+                this.physics.add.collider(this.caja1, this.plataforma3);
+                this.physics.add.collider(this.caja2, this.plataforma3);
+                this.physics.add.collider(this.caja3, this.plataforma3);
+                this.physics.add.collider(this.caja4, this.plataforma3);
+                this.physics.add.collider(this.caja5, this.plataforma3);
+
+                this.physics.add.collider(this.caja1, this.plataforma4);
+                this.physics.add.collider(this.caja2, this.plataforma4);
+                this.physics.add.collider(this.caja3, this.plataforma4);
+                this.physics.add.collider(this.caja4, this.plataforma4);
+                this.physics.add.collider(this.caja5, this.plataforma4);
+
+                this.physics.add.collider(this.caja1, this.plataforma5);
+                this.physics.add.collider(this.caja2, this.plataforma5);
+                this.physics.add.collider(this.caja3, this.plataforma5);
+                this.physics.add.collider(this.caja4, this.plataforma5);
+                this.physics.add.collider(this.caja5, this.plataforma5);
+
+                this.physics.add.collider(this.caja1, this.plataforma6);
+                this.physics.add.collider(this.caja2, this.plataforma6);
+                this.physics.add.collider(this.caja3, this.plataforma6);
+                this.physics.add.collider(this.caja4, this.plataforma6);
+                this.physics.add.collider(this.caja5, this.plataforma6);
+
+                this.physics.add.collider(this.caja1, this.plataforma7);
+                this.physics.add.collider(this.caja2, this.plataforma7);
+                this.physics.add.collider(this.caja3, this.plataforma7);
+                this.physics.add.collider(this.caja4, this.plataforma7);
+                this.physics.add.collider(this.caja5, this.plataforma7);
+
+                this.physics.add.collider(this.caja1, this.plataforma8);
+                this.physics.add.collider(this.caja2, this.plataforma8);
+                this.physics.add.collider(this.caja3, this.plataforma8);
+                this.physics.add.collider(this.caja4, this.plataforma8);
+                this.physics.add.collider(this.caja5, this.plataforma8);
+                
+                this.physics.add.collider(this.laserv1, this.capaItems);
+                this.physics.add.collider(this.laserv2, this.capaItems);
+                this.physics.add.collider(this.laserv4, this.capaItems);
+                this.physics.add.collider(this.laserv5, this.capaItems);
+                this.physics.add.collider(this.laserv6, this.capaItems);
+                this.physics.add.collider(this.laserv7, this.capaItems);
+                this.physics.add.collider(this.laserv8, this.capaItems);
+                this.physics.add.collider(this.laserv10, this.capaItems);
+                this.physics.add.collider(this.laserv11, this.capaItems);
+                this.physics.add.collider(this.laserv12, this.capaItems);
+
+                this.physics.add.collider(this.deva, this.caja1);
+                this.physics.add.collider(this.deva, this.caja2);
+                this.physics.add.collider(this.deva, this.caja3);
+                this.physics.add.collider(this.deva, this.caja4);
+                this.physics.add.collider(this.deva, this.caja5);
+
+                this.physics.add.collider(this.caja1, this.capaItems);
+                this.physics.add.collider(this.caja2, this.capaItems);
+                this.physics.add.collider(this.caja3, this.capaItems);
+                this.physics.add.collider(this.caja4, this.capaItems);
+                this.physics.add.collider(this.caja5, this.capaItems);
+
                 this.cursors = this.input.keyboard.createCursorKeys();
 
+                
+                this.physics.add.overlap(this.boton1off,this.caja2);
+                this.physics.add.overlap(this.boton2off,this.caja3);
+                this.physics.add.overlap(this.boton3off,this.caja4);
+                this.physics.add.overlap(this.boton3off,this.caja5);
+                this.physics.add.overlap(this.boton4off,this.caja4);
+                this.physics.add.overlap(this.boton4off,this.caja5);
+                this.physics.add.overlap(this.boton5off,this.caja1);
+                this.physics.add.overlap(this.boton3on,this.caja4);
+                this.physics.add.overlap(this.boton3on,this.caja5);
+                this.physics.add.overlap(this.boton4on,this.caja4);
+                this.physics.add.overlap(this.boton4on,this.caja5);
+
+                this.physics.add.overlap(this.palanca1Off,this.reni);
+                this.physics.add.overlap(this.palanca1Off,this.deva);
+                this.physics.add.overlap(this.palanca2Off,this.reni);
+                this.physics.add.overlap(this.palanca2Off,this.deva);
+                this.physics.add.overlap(this.palanca3Off,this.reni);
+                this.physics.add.overlap(this.palanca3Off,this.deva);
+                this.physics.add.overlap(this.palanca4Off,this.reni);
+                this.physics.add.overlap(this.palanca4Off,this.deva);
+               
                 this.lefttButton = this.input.keyboard.addKey('A');
                 this.rightButton = this.input.keyboard.addKey('D');
                 this.upButton = this.input.keyboard.addKey('W');
                 this.downButton = this.input.keyboard.addKey('S');
+                this.physics.add.overlap(this.reni, this.portal);
+                this.physics.add.overlap(this.reni, this.portal);
+
+                this.physics.add.overlap(this.reni, this.escalera1);
+                this.physics.add.overlap(this.deva, this.escalera1);
+                this.physics.add.overlap(this.reni, this.escalera2);
+                this.physics.add.overlap(this.deva, this.escalera2);
+                this.physics.add.overlap(this.reni, this.escalera3);
+                this.physics.add.overlap(this.deva, this.escalera3);
+                this.physics.add.overlap(this.reni, this.escalera4);
+                this.physics.add.overlap(this.deva, this.escalera4);
+                this.physics.add.overlap(this.reni, this.escalera5);
+                this.physics.add.overlap(this.deva, this.escalera5);
+                this.physics.add.overlap(this.reni, this.escalera6);
+                this.physics.add.overlap(this.deva, this.escalera6);
+                this.physics.add.overlap(this.reni, this.escalera7);
+                this.physics.add.overlap(this.deva, this.escalera7);
+                this.physics.add.overlap(this.reni, this.escalera8);
+                this.physics.add.overlap(this.deva, this.escalera8);
+                this.physics.add.overlap(this.reni, this.escalera9);
+                this.physics.add.overlap(this.deva, this.escalera9);
+                this.physics.add.overlap(this.reni, this.escalera10);
+                this.physics.add.overlap(this.deva, this.escalera10);
+                this.physics.add.overlap(this.reni, this.escalera11);
+                this.physics.add.overlap(this.deva, this.escalera11);
+                this.physics.add.overlap(this.reni, this.escalera12);
+                this.physics.add.overlap(this.deva, this.escalera12);
+                this.physics.add.overlap(this.reni, this.escalera13);
+                this.physics.add.overlap(this.deva, this.escalera13);
+                this.physics.add.overlap(this.reni, this.escalera14);
+                this.physics.add.overlap(this.deva, this.escalera14);
+
+                this.physics.add.overlap(this.reni,this.laser);
+                this.physics.add.overlap(this.deva,this.laser);
+                this.physics.add.overlap(this.reni,this.laser2);
+                this.physics.add.overlap(this.deva,this.laser2);
+                this.physics.add.overlap(this.reni,this.laser3);
+                this.physics.add.overlap(this.deva,this.laser3);
+                this.physics.add.overlap(this.reni,this.laser4);
+                this.physics.add.overlap(this.deva,this.laser4);
+                this.physics.add.overlap(this.reni,this.laser5);
+                this.physics.add.overlap(this.deva,this.laser5);
+                this.physics.add.overlap(this.reni,this.laser6);
+                this.physics.add.overlap(this.deva,this.laser6);
+                this.physics.add.overlap(this.reni,this.laser7);
+                this.physics.add.overlap(this.deva,this.laser7);
+                this.physics.add.overlap(this.reni,this.laser8);
+                this.physics.add.overlap(this.deva,this.laser8);
+                this.physics.add.overlap(this.reni,this.laser9);
+                this.physics.add.overlap(this.deva,this.laser9);
+                this.physics.add.overlap(this.reni,this.laser1);
+                this.physics.add.overlap(this.deva,this.laser1);
+
+                this.physics.add.overlap(this.reni,this.laserv1);
+                this.physics.add.overlap(this.deva,this.laserv1);
+                this.physics.add.overlap(this.reni,this.laserv2);
+                this.physics.add.overlap(this.deva,this.laserv2);
+                this.physics.add.overlap(this.reni,this.laserv4);
+                this.physics.add.overlap(this.deva,this.laserv4);
+                this.physics.add.overlap(this.reni,this.laserv5);
+                this.physics.add.overlap(this.deva,this.laserv5);
+                this.physics.add.overlap(this.reni,this.laserv6);
+                this.physics.add.overlap(this.deva,this.laserv6);
+                this.physics.add.overlap(this.reni,this.laserv7);
+                this.physics.add.overlap(this.deva,this.laserv7);
+                this.physics.add.overlap(this.reni,this.laserv8);
+                this.physics.add.overlap(this.deva,this.laserv8);
+                this.physics.add.overlap(this.reni,this.laserv10);
+                this.physics.add.overlap(this.deva,this.laserv10);
+                this.physics.add.overlap(this.reni,this.laserv11);
+                this.physics.add.overlap(this.deva,this.laserv11);
+                this.physics.add.overlap(this.reni,this.laserv12);
+                this.physics.add.overlap(this.deva,this.laserv12);
+
+
+
 
                 //Para que la camara no se pasa del mapa
                 this.cameras.main.setBounds(0, 0, this.mapa.widthInPixels, this.mapa.heightInPixels);
@@ -803,10 +1226,318 @@ class Scene4 extends Phaser.Scene{
                 //Vidas
                 this.text = this.add.text(45,20, 'Vidas :', { font: '32px fontGame', fill: '#fff' });
 
+               
+
             }
+            
+            
+            
 
             update ()
-            {
+            {   
+                if (this.laser.body.touching.up){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if (this.laser1.body.touching.up){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if (this.laser2.body.touching.up){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if (this.laser3.body.touching.up){
+                    this.deva.setVelocity(0,0);
+                    this.reni.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if (this.laser4.body.touching.up){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if (this.laser5.body.touching.up){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if (this.laser6.body.touching.up){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if (this.laser7.body.touching.up){
+                    this.deva.setVelocity(0,0);
+                    this.reni.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if (this.laser8.body.touching.up){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if(this.boton1off.body.touching.up){
+                    this.boton1on.visible=true;
+                    this.boton1on.body.enable=true;
+                    this.boton1off.body.enable=false;
+                    this.boton1off.visible=false;
+                    this.plataforma4.visible=true;
+                    this.plataforma4.body.enable=true;
+                 }
+                 if (this.laserv1.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if (this.laserv2.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if (this.laserv4.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if (this.laserv5.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if (this.laserv6.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if (this.laserv7.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if (this.laserv8.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if (this.laserv10.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if (this.laserv11.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+                if (this.laserv12.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                }
+               
+
+                 
+                 if(this.boton2off.body.touching.up){
+                    this.boton2on.visible=true;
+                    this.boton2on.body.enable=true;
+                    this.boton2off.body.enable=false;
+                    this.boton2off.visible=false;
+
+                    this.plataforma5.visible=true;
+                    this.plataforma5.body.enable=true;
+
+                    this.laser.visible=false;
+                    this.laser.body.enable=false;
+                    this.laser1.visible=false;
+                    this.laser1.body.enable=false;
+                    this.laser2.visible=false;
+                    this.laser2.body.enable=false;
+                    this.laser3.visible=false;
+                    this.laser3.body.enable=false;
+                    this.laser4.visible=false;
+                    this.laser4.body.enable=false;
+                    this.laser5.visible=false;
+                    this.laser5.body.enable=false;
+                    this.laser6.visible=false;
+                    this.laser6.body.enable=false;
+                    this.laser7.visible=false;
+                    this.laser7.body.enable=false;
+                    this.laser8.visible=false;
+                    this.laser8.body.enable=false;
+                    this.laser9.visible=false;
+                    this.laser9.body.enable=false;
+
+                    this.laserv1.visible=false;
+                    this.laserv1.body.enable=false;
+                    this.laserv2.visible=false;
+                    this.laserv2.body.enable=false;
+                    this.laserv4.visible=false;
+                    this.laserv4.body.enable=false;
+                    this.laserv5.visible=false;
+                    this.laserv5.body.enable=false;
+                    this.laserv6.visible=false;
+                    this.laserv6.body.enable=false;
+                    this.laserv7.visible=false;
+                    this.laserv7.body.enable=false;
+                    this.laserv8.visible=false;
+                    this.laserv8.body.enable=false;
+                    this.laserv9.visible=false;
+                    this.laserv9.body.enable=false;
+                    this.laserv10.visible=false;
+                    this.laserv10.body.enable=false;
+                    this.laserv11.visible=false;
+                    this.laserv11.body.enable=false;
+                    this.laserv12.visible=false;
+                    this.laserv12.body.enable=false;
+
+
+                   
+                 }
+                 if(this.boton3off.body.touching.up){
+                    this.boton3on.visible=true;
+                    this.boton3on.body.enable=true;
+                    this.boton3off.body.enable=false;
+                    this.boton3off.visible=false;
+                   
+                 }
+                 if(this.boton4off.body.touching.up){
+                    this.boton4on.visible=true;
+                    this.boton4on.body.enable=true;
+                    this.boton4off.body.enable=false;
+                    this.boton4off.visible=false;
+                   
+                 }
+                 if(this.boton5off.body.touching.up){
+                    this.boton5on.visible=true;
+                    this.boton5on.body.enable=true;
+                    this.boton5off.body.enable=false;
+                    this.boton5off.visible=false;
+                    this.plataforma3.visible=true;
+                    this.plataforma3.body.enable=true;
+                   
+                 }
+                 if(this.palanca1Off.body.touching.up){
+                    this.palanca1On.visible=true;
+                    this.palanca1On.body.enable=true;
+                    this.palanca1Off.body.enable=false;
+                    this.palanca1Off.visible=false;
+                    this.plataforma1.visible=true;
+                    this.plataforma1.body.enable=true;
+                   
+                   
+                 }
+                 if(this.palanca2Off.body.touching.up){
+                    this.palanca2On.visible=true;
+                    this.palanca2On.body.enable=true;
+                    this.palanca2Off.body.enable=false;
+                    this.palanca2Off.visible=false;
+                    this.plataforma2.visible=true;
+                    this.plataforma2.body.enable=true;
+                   
+                   
+                 }
+                 if(this.palanca3Off.body.touching.up){
+                    this.palanca3On.visible=true;
+                    this.palanca3On.body.enable=true;
+                    this.palanca3Off.body.enable=false;
+                    this.palanca3Off.visible=false;
+                    this.plataforma6.visible=true;
+                    this.plataforma6.body.enable=true;
+                    this.plataforma10.visible=false;
+                    this.plataforma10.body.enable=false;
+                    this.plataforma11.visible=false;
+                    this.plataforma11.body.enable=false;
+
+                   
+                 }
+                 if(this.palanca4Off.body.touching.up){
+                    this.palanca4On.visible=true;
+                    this.palanca4On.body.enable=true;
+                    this.palanca4Off.body.enable=false;
+                    this.palanca4Off.visible=false;
+                    this.plataforma8.visible=true;
+                    this.plataforma8.body.enable=true; 
+                    this.plataforma7.visible=false;
+                    this.plataforma7.body.enable=false;
+                    this.plataforma12.visible=false;
+                    this.plataforma12.body.enable=false;
+
+                   
+                 }
+             
+                if(this.deva.y>3300){
+                    this.deva.setVelocity(0,0);
+                    this.deva.x=330;
+                    this.deva.y=480;
+    
+                }
+                 if(this.reni.y>3300){
+                    this.reni.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=480;
+                }
+
                 //Nombres
                 this.textReni.x = this.reni.body.position.x + 40;
                 this.textReni.y = this.reni.body.position.y - 20;
@@ -848,14 +1579,17 @@ class Scene4 extends Phaser.Scene{
                 }
 
                 //Salto
-                if (this.cursors.up.isDown && this.deva.body.onFloor() || this.cursors.up.isDown && this.deva.body.touching.down)
+                if (this.cursors.up.isDown && this.deva.body.onFloor() ||this.cursors.up.isDown && this.deva.body.touching.down)
                 {
                     this.deva.body.setVelocityY(-290);
-                    this.sonidoDeva.stop();
-                    this.sonidoSalto.play();   
+                    //this.sonidoDeva.stop();
+                    //this.sonidoSalto.play();   
                 }
+                if(this.upButton.isDown && this.reni.body.onWall()){
+                    this.reni.body.setVelocityY(-200);
+                   }
 
-                if((this.caja.body.touching.left&&this.rightButton.isDown) || (this.caja.body.touching.right&&this.lefttButton.isDown))
+               /* if((this.cajas.body.touching.left&&this.rightButton.isDown) || (this.cajas.body.touching.right&&this.lefttButton.isDown))
                 {
 
                     if(!this.sonidoCaja.isPlaying)
@@ -864,7 +1598,7 @@ class Scene4 extends Phaser.Scene{
                 }else
                 {
                     this.sonidoCaja.stop();
-                }
+                }*/
 
                 //Controles de Reni
                 if (this.lefttButton.isDown)
@@ -902,14 +1636,20 @@ class Scene4 extends Phaser.Scene{
                 if(this.upButton.isDown && this.reni.body.onFloor()||this.upButton.isDown && this.reni.body.touching.down)
                 {
                     this.reni.body.setVelocityY(-360);
-                    this.sonidoReni.stop();
-                    this.sonidoSalto.play();
+                    //this.sonidoReni.stop();
+                    //this.sonidoSalto.play();
+                }
+
+                if(this.portal.body.touching.up && this.downButton.isDown && this.cursors.down.isDown && this.boton3on.body.touching.up && this.boton4on.body.touching.up)
+                {
+                    this.sonidoPortal.play();
+                    this.scene.start('Créditos');
+                    
                 }
                 
             }
 
         }
-        
 
 class Scene6 extends Phaser.Scene {
 
