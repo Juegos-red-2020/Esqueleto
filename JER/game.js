@@ -64,7 +64,7 @@ class Scene0 extends Phaser.Scene{
 
         this.load.image('GameOver', 'Assets/GameOver.png');
         this.load.image('TextoGameOver','Assets/ReintentarSalir.png');
-        this.load.audio('M_Game_Over','Assets/media/Spa Relaxing Piano.mp3');
+        this.load.audio('M_Game_Over','Assets/musica/Spa Relaxing Piano.mp3');
         
         //ESCENA4
         this.load.image('tilesEntorno', 'Assets/mapa/entorno.png');
