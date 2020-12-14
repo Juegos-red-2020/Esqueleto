@@ -314,7 +314,12 @@ class Scene1 extends Phaser.Scene{
                 this.controlesDeva.destroy();
 
             },this);
+            
+            this.deva.on('pointerdown',function(){
 
+                this.scene.start('Mapa');
+
+            },this);
 
 
             this.reni.on('pointerover',function(){
@@ -329,7 +334,12 @@ class Scene1 extends Phaser.Scene{
                 this.textoReni.destroy();
                 this.controlesReni.destroy();
             },this);
+            
+            this.reni.on('pointerdown',function(){
 
+                this.scene.start('Mapa');
+
+            },this);
 
 
             this.salir.on('pointerover',function(){
