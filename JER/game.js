@@ -88,6 +88,9 @@ class Scene0 extends Phaser.Scene{
         this.load.image('Boton_on','Assets/boton_on.png');
         this.load.image('Escalera','Assets/Escalera.png');
         this.load.image('Laser','Assets/Laser.png');
+        this.load.image('img_tuto_abajo','Assets/flecha_abajo_reni.png');
+        this.load.image('img_tuto_portal','Assets/tuto_portal.png');
+        this.load.image('img_tuto_empujar','Assets/tuto_empujar_caja.png');
         
         //ESCENA5
         this.load.image('tilesEntorno1', 'Assets/mapa/Tiles_Entorno.png');
@@ -434,6 +437,11 @@ class Scene4 extends Phaser.Scene{
             this.plataforma.visible=false;
             this.plataforma.body.enable=false;
             this.boton_off= this.physics.add.staticImage(800,472,'Boton_off');
+            this.img_tuto_abajo = this.physics.add.staticSprite(1400, config.height-230, 'img_tuto_abajo');
+            this.img_tuto_portal = this.physics.add.staticSprite(config.width+2092, config.height-400, 'img_tuto_portal');
+            this.img_tuto_empujar = this.physics.add.staticSprite(config.width, config.height-230, 'img_tuto_empujar');
+            this.muroderechalimite = this.physics.add.staticSprite(3215, 470, '');
+            this.muroizqlimite = this.physics.add.staticSprite(0, 470, '');
             //this.escalera=this.physics.add.staticImage(850,450,'Escalera');
             //this.escalera.body.enable=false;
             //this.escalera.visible=false;
@@ -444,6 +452,15 @@ class Scene4 extends Phaser.Scene{
             this.sonidoCaja = this.sound.add('Caja',{loop: true});
             //Sonido Salto
             this.sonidoSalto = this.sound.add('Salto',{loop: false});
+            
+            //Imagenes tutoriales
+            this.img_tuto_abajo.visible = false;
+            this.img_tuto_portal.visible = false;
+
+            this.img_tuto_empujar.visible = false;
+
+            this.muroderechalimite.body.setSize(0,1000);
+            this.muroizqlimite.body.setSize(0,1000);
             
             //Vidas
             this.text = this.add.text(45,20, 'Vidas :', { font: '32px fontGame', fill: '#fff' });
@@ -491,12 +508,17 @@ class Scene4 extends Phaser.Scene{
             this.physics.add.collider(this.caja, this.deva);
             this.physics.add.collider(this.reni, this.plataforma);
             this.physics.add.collider(this.plataforma, this.deva);
-
+            this.physics.add.collider(this.muroderechalimite, this.deva);
+            this.physics.add.collider(this.muroderechalimite, this.reni);
+            this.physics.add.collider(this.muroizqlimite, this.deva);
+            this.physics.add.collider(this.muroizqlimite, this.reni);
             
             //overlaps
             this.physics.add.overlap(this.reni,this.boton_off);
             this.physics.add.overlap(this.reni,this.palancaOff);
             this.physics.add.overlap(this.deva,this.palancaOff);
+            this.physics.add.overlap(this.deva,this.portal);
+            this.physics.add.overlap(this.reni,this.portal);
 
 
             //Asignación de teclas
@@ -524,7 +546,10 @@ class Scene4 extends Phaser.Scene{
 
          this.textDeva.x = this.deva.body.position.x + 40;
          this.textDeva.y = this.deva.body.position.y - 20;
-
+            
+         this.img_tuto_empujar.x = this.caja.body.position.x+70;
+         this.img_tuto_empujar.y = this.caja.body.position.y-50;
+            
          //activar boton 
          if(this.boton_off.body.touching.up){
             this.boton_on=this.physics.add.staticImage(800,472,'Boton_on');
@@ -532,6 +557,17 @@ class Scene4 extends Phaser.Scene{
             this.boton_off.visible=false;
             this.caja.visible=true;
             this.caja.body.enable=true;
+            this.img_tuto_empujar.visible = true;
+         }
+            
+            //Tuto imagen
+         if(this.palancaOff.body.touching.up)
+         {
+            this.img_tuto_abajo.visible = true;
+         }
+         if(this.portal.body.touching.up)
+         {
+             this.img_tuto_portal.visible = true;
          }
             
          //Controles Deva
@@ -539,7 +575,7 @@ class Scene4 extends Phaser.Scene{
                
                 if (this.cursors.left.isDown)
                 {
-                    this.deva.setVelocityX(-200);
+                    this.deva.setVelocityX(-250);
                     this.deva.anims.play('caminarDeva', true);
                     this.deva.flipX = true;
 
@@ -549,7 +585,7 @@ class Scene4 extends Phaser.Scene{
                 }
                 else if (this.cursors.right.isDown)
                 {
-                    this.deva.setVelocityX(200);
+                    this.deva.setVelocityX(250);
                     this.deva.anims.play('caminarDeva', true);
                     this.deva.flipX = false;
 
@@ -577,7 +613,7 @@ class Scene4 extends Phaser.Scene{
                     this.sonidoSalto.play();   
                 }
             
-            //Controles de Reni
+            //Si se caen se restauran a su origen
             if(this.deva.y>620){
                 this.deva.x=150;
                 this.deva.y=400;
@@ -585,8 +621,8 @@ class Scene4 extends Phaser.Scene{
             }
                 if(this.reni.y>620){
                     this.reni.x=150;
-                    this.reni.y=420;
-
+                    this.reni.y=400;
+            //Controles de Reni
                 }
                 if (this.lefttButton.isDown)
                 {
