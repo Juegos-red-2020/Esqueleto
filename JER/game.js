@@ -624,16 +624,23 @@ class Scene4 extends Phaser.Scene{
                 }
             
             //Si se caen se restauran a su origen
-            if(this.deva.y>620){
-                this.deva.x=150;
-                this.deva.y=400;
+                if(this.deva.y>620){
+                    this.deva.x=150;
+                    this.deva.y=400;
+                
+                    this.reni.x=150;
+                    this.reni.y=400;
 
-            }
+                }
                 if(this.reni.y>620){
                     this.reni.x=150;
                     this.reni.y=400;
-            //Controles de Reni
+                    
+                    this.deva.x=150;
+                    this.deva.y=400;
                 }
+            
+            //Controles de Reni
                 if (this.lefttButton.isDown)
                 {
                     this.reni.setVelocityX(-300);
