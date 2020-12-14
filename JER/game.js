@@ -36,6 +36,7 @@ class Scene0 extends Phaser.Scene{
         
         this.load.image('Empezar','Assets/Empezar.png');
         this.load.audio('M_Inicio','Assets/musica/Inicio.mp3');
+        
 
     //ESCENA1
         this.load.image('Titulo', 'Assets/Titulo.png');
@@ -48,6 +49,7 @@ class Scene0 extends Phaser.Scene{
         this.load.image('SalirJuegoA','Assets/Salir2.png');
         this.load.image('Creditos', 'Assets/Creditos.png');
         this.load.image('CreditosA', 'Assets/Creditos2.png');
+        this.load.audio('M_Botones', 'Assets/musica/Cursor_Rollover_1.wav');
 
         //ESCENA2
         this.load.spritesheet('Deva','Assets/Deva-Sprites.png',{frameWidth:100,frameHeight:128});
