@@ -46,6 +46,8 @@ class Scene0 extends Phaser.Scene{
         this.load.image('Fondo','Assets/Fondo.png');
         this.load.image('SalirJuego','Assets/Salir.png');
         this.load.image('SalirJuegoA','Assets/Salir2.png');
+        this.load.image('Creditos', 'Assets/Creditos.png');
+        this.load.image('CreditosA', 'Assets/Creditos2.png');
 
         //ESCENA2
         this.load.spritesheet('Deva','Assets/Deva-Sprites.png',{frameWidth:100,frameHeight:128});
@@ -62,6 +64,7 @@ class Scene0 extends Phaser.Scene{
 
         this.load.image('GameOver', 'Assets/GameOver.png');
         this.load.image('TextoGameOver','Assets/ReintentarSalir.png');
+        this.load.audio('M_Game_Over','Assets/media/Spa Relaxing Piano.mp3');
         
         //ESCENA4
         this.load.image('tilesEntorno', 'Assets/mapa/entorno.png');
@@ -96,6 +99,12 @@ class Scene0 extends Phaser.Scene{
         this.load.image('tilesEntorno1', 'Assets/mapa/Tiles_Entorno.png');
         this.load.tilemapTiledJSON('mapa1', 'Assets/mapa/map_Grande.json');
         this.load.image('Fondo_1','Assets/mapa/map_Grande.png');
+        
+        //ESCENA6
+        this.load.image('Dis', 'Assets/Dis.png');
+        this.load.image('DisN', 'Assets/Dis_N.png');
+        this.load.image('Prog', 'Assets/Prog.png');
+       
     }
     
      create ()
@@ -143,55 +152,39 @@ class Scene1 extends Phaser.Scene{
     
     preload ()
     {
-        this.load.image('Titulo', 'Assets/Titulo.png');
-        this.load.image('Tutorial', 'Assets/Tutorial.png');
-        this.load.image('TutorialA', 'Assets/Tutorial2.png');
-        this.load.image('Jugar', 'Assets/Jugar.png');
-        this.load.image('JugarA', 'Assets/Jugar2.png');
-        this.load.image('Fondo','Assets/Fondo.png');
-        this.load.image('SalirJuego','Assets/Salir.png');
-        this.load.image('SalirJuegoA','Assets/Salir2.png');
-        //this.load.audio('Musica', 'Assets/Musica.mp3');
+
     }
     
      create ()
     {    
-        this.fondo=this.physics.add.staticSprite(config.width/2,config.height/2,'Fondo');
+       this.fondo=this.physics.add.staticSprite(config.width/2,config.height/2,'Fondo');
        this.titulo=this.physics.add.staticSprite(config.width/2,config.height/8,'Titulo');
-       this.jugar=this.physics.add.staticSprite(config.width/2,config.height/2,'Jugar');
-       this.tutorial=this.physics.add.staticSprite(config.width/2,config.height/1.5,'Tutorial');
-       this.salirJuego=this.physics.add.staticSprite(config.width/2,config.height/1.2,'SalirJuego');
+       this.jugar = this.physics.add.staticSprite(config.width / 2, config.height / 2.2, 'Jugar');
+       this.tutorial = this.physics.add.staticSprite(config.width / 2, config.height / 1.7, 'Tutorial');
+       this.creditos=this.physics.add.staticSprite(config.width / 2, config.height / 1.35, 'Creditos');
+       this.salirJuego = this.physics.add.staticSprite(config.width / 2, config.height / 1.15, 'SalirJuego');
        this.musica=this.sound.add('M_Inicio');
+       this.musicaBotones = this.sound.add('M_Botones');
+       this.musica.play();
 
-       if (!this.sound.locked)
-       {
-           // already unlocked so play
-           this.musica.play();
-       }
-       else
-       {
-           // wait for 'unlocked' to fire and then play
-           this.sound.once(Phaser.Sound.Events.UNLOCKED, () => {
-               this.musica.play();
-           });
-       }
   
         this.jugar.setInteractive();
         this.tutorial.setInteractive();
+        this.creditos.setInteractive();
         this.salirJuego.setInteractive();
 
-        this.jugar.on('pointerover',function(){
+         this.jugar.on('pointerover', function () {
 
-            this.jugar=this.physics.add.staticSprite(config.width/2,config.height/2,'JugarA');
+            this.jugar = this.physics.add.staticSprite(config.width / 2, config.height / 2.2, 'JugarA');
+            this.musicaBotones.play();
+        }, this);
 
-        },this);
 
+        this.jugar.on('pointerout', function () {
 
-        this.jugar.on('pointerout',function(){
+            this.jugar = this.physics.add.staticSprite(config.width / 2, config.height / 2.2, 'Jugar');
 
-            this.jugar=this.physics.add.staticSprite(config.width/2,config.height/2,'Jugar');
-
-        },this);
+        }, this);
         this.jugar.on('pointerdown', function () {
 
             this.scene.start('Personajes');
@@ -200,17 +193,17 @@ class Scene1 extends Phaser.Scene{
 
 
 
-        this.tutorial.on('pointerover',function(){
+        this.tutorial.on('pointerover', function () {
 
-            this.tutorial=this.physics.add.staticSprite(config.width/2,config.height/1.5,'TutorialA');
+            this.tutorial = this.physics.add.staticSprite(config.width / 2, config.height / 1.7, 'TutorialA');
+            this.musicaBotones.play();
+        }, this);
 
-        },this);
+        this.tutorial.on('pointerout', function () {
 
-        this.tutorial.on('pointerout',function(){
+            this.tutorial = this.physics.add.staticSprite(config.width / 2, config.height / 1.7, 'Tutorial');
 
-            this.tutorial=this.physics.add.staticSprite(config.width/2,config.height/1.5,'Tutorial');
-
-        },this);
+        }, this);
         this.tutorial.on('pointerdown', function () {
 
             this.scene.start('Game Over');
@@ -219,22 +212,41 @@ class Scene1 extends Phaser.Scene{
 
 
 
-        this.salirJuego.on('pointerover',function(){
+        this.creditos.on('pointerover', function () {
 
-            this.salirJuego=this.physics.add.staticSprite(config.width/2,config.height/1.2,'SalirJuegoA');
+            this.creditos = this.physics.add.staticSprite(config.width / 2, config.height / 1.35, 'CreditosA');
+            this.musicaBotones.play();
+        }, this);
 
-        },this);
+        this.creditos.on('pointerout', function () {
 
-        this.salirJuego.on('pointerout',function(){
+            this.creditos=this.physics.add.staticSprite(config.width / 2, config.height / 1.35, 'Creditos');
 
-            this.salirJuego=this.physics.add.staticSprite(config.width/2,config.height/1.2,'SalirJuego');
+        }, this);
+        this.creditos.on('pointerdown', function () {
 
-        },this);
+            this.scene.start('Creditos');
+            this.musica.stop();
+        }, this);
+
+
+        this.salirJuego.on('pointerover', function () {
+
+            this.salirJuego = this.physics.add.staticSprite(config.width / 2, config.height / 1.15, 'SalirJuegoA');
+            this.musicaBotones.play();
+        }, this);
+
+        this.salirJuego.on('pointerout', function () {
+
+            this.salirJuego = this.physics.add.staticSprite(config.width / 2, config.height / 1.15, 'SalirJuego');
+
+        }, this);
         this.salirJuego.on('pointerdown', function () {
 
-           game.destroy(true);
-            
+            game.destroy(true);
+
         }, this);
+
 
 
 
@@ -260,16 +272,7 @@ class Scene1 extends Phaser.Scene{
         
         preload ()
         {
-            this.load.spritesheet('Deva','Assets/Deva-Sprites.png',{frameWidth:100,frameHeight:128});
-            this.load.spritesheet('Reni','Assets/Reni-Sprites.png',{frameWidth:100,frameHeight:128});
-            this.load.image('Salir','Assets/Flecha.png');
-            this.load.image('SalirA','Assets/Flecha2.png');
-            this.load.image('TextoDeva','Assets/DevaTexto.png');
-            this.load.image('TextoReni','Assets/ReniTexto.png');
-            this.load.image('Fondo','Assets/Fondo.png');
-            this.load.image('Elige','Assets/Personajes.png');
-            this.load.image('Flechas','Assets/Flechas.png');
-            this.load.image('WASD','Assets/WASD.png');
+
         }
         
          create ()
@@ -280,6 +283,7 @@ class Scene1 extends Phaser.Scene{
             this.salir.setInteractive();
             this.deva=this.physics.add.staticSprite(config.width/4,config.height/3,'Deva');
             this.deva.setInteractive();
+            this.musicaBotones = this.sound.add('M_Botones');
          
             this.anims.create({ 
                 key: 'caminarDeva',
@@ -305,6 +309,7 @@ class Scene1 extends Phaser.Scene{
 
                 this.textoDeva=this.physics.add.staticSprite(config.width/4,config.height/1.7,'TextoDeva');
                 this.controlesDeva=this.physics.add.staticSprite(config.width/4,config.height/1.15,'Flechas');
+                this.musicaBotones.play();
     
             },this);
 
@@ -326,6 +331,7 @@ class Scene1 extends Phaser.Scene{
 
                 this.textoReni=this.physics.add.staticSprite(config.width*3/4,config.height/1.7,'TextoReni');
                 this.controlesReni=this.physics.add.staticSprite(config.width*3/4,config.height/1.15,'WASD');
+                this.musicaBotones.play();
     
             },this);
 
@@ -345,6 +351,7 @@ class Scene1 extends Phaser.Scene{
             this.salir.on('pointerover',function(){
 
                 this.salir=this.physics.add.staticSprite(config.width/12,config.height/10,'SalirA');
+                this.musicaBotones.play();
     
             },this);
     
@@ -371,49 +378,45 @@ class Scene1 extends Phaser.Scene{
 
 
 
-        class Scene3 extends Phaser.Scene{
+        class Scene3 extends Phaser.Scene {
 
-            constructor(){
+    constructor() {
+
+        super({ key: "Game Over" });
+
+    }
+
+    preload() {
+
+
+    }
+    create() {
+        this.fondo=this.physics.add.staticSprite(config.width / 2, config.height / 2, 'Fondo');
+
+        this.gameover = this.physics.add.staticSprite(config.width / 2, config.height / 3, 'GameOver');
+        this.texto = this.physics.add.staticSprite(config.width / 2, config.height / 1.5, 'TextoGameOver');
+        this.musica=this.sound.add('M_Game_Over');
+        this.musica.play();
+    }
+
+    update() {
+        if (this.input.keyboard.addKey('A').isDown || this.input.keyboard.addKey('a').isDown) {
+
+            this.musica.stop();
+            this.scene.start('Inicio');
+           
+
+        } else if (this.input.keyboard.addKey('D').isDown || this.input.keyboard.addKey('d').isDown) {
+
+            this.musica.stop();
+            this.scene.start('Mapa');
             
-                super({key:"Game Over"});
-            
-            }
-            
-            preload ()
-            {
-               this.load.image('GameOver', 'Assets/GameOver.png');
-             this.load.image('TextoGameOver','Assets/ReintentarSalir.png');
-
-            }
-
-            
-            
-             create ()
-            {   
-                this.gameover=this.physics.add.staticSprite(config.width/2,config.height/3,'GameOver');
-                this.texto=this.physics.add.staticSprite(config.width/2,config.height/1.5,'TextoGameOver');
-        
-
-            }
-            
-             update ()
-            {
-                
-
-                if(this.input.keyboard.addKey('A').isDown||this.input.keyboard.addKey('a').isDown){
-
-                    
-                    this.scene.start('Inicio');
-
-                }else if(this.input.keyboard.addKey('D').isDown||this.input.keyboard.addKey('d').isDown){
-
-                    this.scene.start('Personajes');
-                }
+        }
 
 
-            }
-             
-            }
+    }
+
+}
 
 class Scene4 extends Phaser.Scene{
 
@@ -906,7 +909,60 @@ class Scene4 extends Phaser.Scene{
         }
         
 
+class Scene6 extends Phaser.Scene {
 
+    constructor() {
+
+        super({ key: "Creditos" });
+
+    }
+
+    preload() {
+
+
+    }
+
+
+    create() {
+        this.fondo = this.physics.add.staticSprite(config.width / 2, config.height / 2, 'Fondo');
+        this.titulo = this.physics.add.staticSprite(config.width / 2, config.height / 8, 'Titulo');
+        this.dis = this.physics.add.staticSprite(config.width / 4, config.height / 2, 'Dis');
+        this.prog = this.physics.add.staticSprite(config.width / 2, config.height / 1.5, 'Prog');
+        this.disNiveles = this.physics.add.staticSprite(config.width * 3 / 4, config.height / 2.1, 'DisN');
+        this.musica=this.sound.add('M_Game_Over');
+        this.musicaBotones = this.sound.add('M_Botones');
+        this.salir = this.physics.add.staticSprite(config.width / 12, config.height / 10, 'Salir');
+        this.salir.setInteractive();
+        this.musica.play();
+
+        this.salir.on('pointerover', function () {
+
+            this.salir = this.physics.add.staticSprite(config.width / 12, config.height / 10, 'SalirA');
+            this.musicaBotones.play();
+        }, this);
+
+        this.salir.on('pointerout', function () {
+
+            this.salir = this.physics.add.staticSprite(config.width / 12, config.height / 10, 'Salir');
+
+        }, this);
+
+        this.salir.on('pointerdown', function () {
+
+            this.musica.stop();
+            this.scene.start('Inicio');
+
+        }, this);
+
+    }
+
+    update() {
+
+
+
+    }
+
+}
 
 
     var config={
@@ -927,7 +983,7 @@ class Scene4 extends Phaser.Scene{
     
     },
     
-    scene: [Scene0,Scene1,Scene2,Scene3,Scene4,Scene5]
+    scene: [Scene0,Scene1,Scene2,Scene3,Scene4,Scene5,Scene6]
     
     };
 var game=new Phaser.Game(config);
