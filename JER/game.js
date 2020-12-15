@@ -755,11 +755,11 @@ class Scene4 extends Phaser.Scene{
                 this.portal = this.physics.add.staticImage(4020, 3220, 'Portal');
                 this.sonidoPortal=this.sound.add('Portal_sound',{loop:false});
 
-                this.caja1=this.physics.add.sprite(1190, 544, 'cajaOff');
+                this.caja1=this.physics.add.sprite(1260, 544, 'cajaOff');
                 this.caja1.setDrag(10000,0);
                 this.caja2=this.physics.add.sprite(480, 928, 'cajaOff');
                 this.caja2.setDrag(10000,0);
-                this.caja3=this.physics.add.sprite(254, 1600, 'cajaOff');
+                this.caja3=this.physics.add.sprite(284, 1600, 'cajaOff');
                 this.caja3.setDrag(10000,0);
                 this.caja4=this.physics.add.sprite(1696,1600, 'cajaOff');
                 this.caja4.setDrag(10000,0);
@@ -845,7 +845,7 @@ class Scene4 extends Phaser.Scene{
                 this.escalera9=this.physics.add.staticImage(2336,2356,'Escalera');
                 this.escalera10=this.physics.add.staticImage(5536,3060,'Escalera');
                 this.escalera11=this.physics.add.staticImage(5536,2708,'Escalera');
-                this.escalera11=this.physics.add.staticImage(4950,1100,'Escalera');
+                this.escalera15=this.physics.add.staticImage(4950,1100,'Escalera');
                 this.escalera12=this.physics.add.staticImage(4950,1450,'Escalera');
                 this.escalera13=this.physics.add.staticImage(132,1800,'Escalera');
                 this.escalera14=this.physics.add.staticImage(132,2100,'Escalera');
@@ -876,10 +876,10 @@ class Scene4 extends Phaser.Scene{
                 this.laser4.setBounceX(1);
                 this.laser4.setVelocityX(300);
 
-                this.laser5=this.physics.add.image(32,2484,'LaserH');
+                /*this.laser5=this.physics.add.image(32,2484,'LaserH');
                 this.laser5.body.setAllowGravity(false);
                 this.laser5.setBounceX(1);
-                this.laser5.setVelocityX(300);
+                this.laser5.setVelocityX(300);*/
 
                 this.laser6=this.physics.add.image(700,2644,'LaserH');
                 this.laser6.body.setAllowGravity(false);
@@ -1008,7 +1008,7 @@ class Scene4 extends Phaser.Scene{
                 this.physics.add.collider(this.laser2, this.capaItems);
                 this.physics.add.collider(this.laser3, this.capaItems);
                 this.physics.add.collider(this.laser4, this.capaItems);
-                this.physics.add.collider(this.laser5, this.capaItems);
+               // this.physics.add.collider(this.laser5, this.capaItems);
                 this.physics.add.collider(this.laser6, this.capaItems);
                 this.physics.add.collider(this.laser7, this.capaItems);
                 this.physics.add.collider(this.laser8, this.capaItems);
@@ -1172,6 +1172,8 @@ class Scene4 extends Phaser.Scene{
                 this.physics.add.overlap(this.deva, this.escalera13);
                 this.physics.add.overlap(this.reni, this.escalera14);
                 this.physics.add.overlap(this.deva, this.escalera14);
+                this.physics.add.overlap(this.reni, this.escalera15);
+                this.physics.add.overlap(this.deva, this.escalera15);
 
                 this.physics.add.overlap(this.reni,this.laser);
                 this.physics.add.overlap(this.deva,this.laser);
@@ -1181,8 +1183,8 @@ class Scene4 extends Phaser.Scene{
                 this.physics.add.overlap(this.deva,this.laser3);
                 this.physics.add.overlap(this.reni,this.laser4);
                 this.physics.add.overlap(this.deva,this.laser4);
-                this.physics.add.overlap(this.reni,this.laser5);
-                this.physics.add.overlap(this.deva,this.laser5);
+                // this.physics.add.overlap(this.reni,this.laser5);
+                //this.physics.add.overlap(this.deva,this.laser5);
                 this.physics.add.overlap(this.reni,this.laser6);
                 this.physics.add.overlap(this.deva,this.laser6);
                 this.physics.add.overlap(this.reni,this.laser7);
@@ -1280,7 +1282,7 @@ class Scene4 extends Phaser.Scene{
                     this.deva.y=510;
                     this.vida-=1;
                 }
-                if (this.laser5.body.touching.up){
+               /* if (this.laser5.body.touching.up){
                     this.reni.setVelocity(0,0);
                     this.deva.setVelocity(0,0);
                     this.reni.x=330;
@@ -1288,7 +1290,7 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
-                }
+                }*/
                 if (this.laser6.body.touching.up){
                     this.reni.setVelocity(0,0);
                     this.deva.setVelocity(0,0);
@@ -1441,8 +1443,8 @@ class Scene4 extends Phaser.Scene{
                     this.laser3.body.enable=false;
                     this.laser4.visible=false;
                     this.laser4.body.enable=false;
-                    this.laser5.visible=false;
-                    this.laser5.body.enable=false;
+                    //this.laser5.visible=false;
+                    //this.laser5.body.enable=false;
                     this.laser6.visible=false;
                     this.laser6.body.enable=false;
                     this.laser7.visible=false;
@@ -1466,8 +1468,6 @@ class Scene4 extends Phaser.Scene{
                     this.laserv7.body.enable=false;
                     this.laserv8.visible=false;
                     this.laserv8.body.enable=false;
-                    this.laserv9.visible=false;
-                    this.laserv9.body.enable=false;
                     this.laserv10.visible=false;
                     this.laserv10.body.enable=false;
                     this.laserv11.visible=false;
