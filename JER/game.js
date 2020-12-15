@@ -1,4 +1,4 @@
-//ESQUELETO INACABADO
+//MARAUDER
 
 class Scene0 extends Phaser.Scene{
 
@@ -419,8 +419,13 @@ class Scene1 extends Phaser.Scene{
 
         } else if (this.input.keyboard.addKey('D').isDown || this.input.keyboard.addKey('d').isDown) {
 
-            this.musica.stop();
-            this.scene.start('Mapa');
+           if(nivel==='Mapa'){
+                this.musica.stop();
+                this.scene.start('Mapa');
+            }else if(nivel==='Mapa_Final'){
+                this.musica.stop();
+                this.scene.start('Mapa_Final');
+            }
             
         }
 
@@ -445,6 +450,7 @@ class Scene4 extends Phaser.Scene{
         
          create ()
         {   
+            nivel='Mapa';
             this.mapa=this.make.tilemap({key:'mapa'});
             this.fondoTutorial1 = this.physics.add.staticSprite(config.width+600,config.height/2,'Fondo_Tuto_1');
             this.caja = this.physics.add.sprite(config.width, config.height/2, 'cajaOff');
@@ -673,6 +679,7 @@ class Scene4 extends Phaser.Scene{
                 }
             
                 if (this.vida <= 0){
+                    this.game.sound.stopAll();
                     this.scene.start('Game Over');
                 }
             
@@ -752,7 +759,7 @@ class Scene4 extends Phaser.Scene{
             {   
                 
                
-
+                nivel='Mapa_Final';
                 
                 this.vida=3;
                 this.mapa=this.make.tilemap({key:'mapa1'});     
@@ -1474,6 +1481,7 @@ class Scene4 extends Phaser.Scene{
                     this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.vida<=0){
+                    this.game.sound.stopAll();
                     this.scene.start('Game Over');
                 }
                 
@@ -1898,5 +1906,6 @@ class Scene6 extends Phaser.Scene {
     scene: [Scene0,Scene1,Scene2,Scene3,Scene4,Scene5,Scene6]
     
     };
+var nivel=null;
 var game=new Phaser.Game(config);
 
