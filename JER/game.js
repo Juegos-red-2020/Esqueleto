@@ -738,7 +738,7 @@ class Scene4 extends Phaser.Scene{
                
 
                 
-
+                this.vida=3;
                 this.mapa=this.make.tilemap({key:'mapa1'});     
 
                 this.fondo1 = this.physics.add.staticSprite(config.width+1895,config.height+1048,'Fondo_1');
@@ -1242,6 +1242,7 @@ class Scene4 extends Phaser.Scene{
                     this.reni.y=510;
                     this.deva.x=330;
                     this.deva.y=510;
+                    this.vida-=1;
                 }
                 if (this.laser1.body.touching.up){
                     this.reni.setVelocity(0,0);
@@ -1250,6 +1251,7 @@ class Scene4 extends Phaser.Scene{
                     this.reni.y=510;
                     this.deva.x=330;
                     this.deva.y=510;
+                    this.vida-=1;
                 }
                 if (this.laser2.body.touching.up){
                     this.reni.setVelocity(0,0);
@@ -1258,6 +1260,7 @@ class Scene4 extends Phaser.Scene{
                     this.reni.y=510;
                     this.deva.x=330;
                     this.deva.y=510;
+                    this.vida-=1;
                 }
                 if (this.laser3.body.touching.up){
                     this.deva.setVelocity(0,0);
@@ -1266,6 +1269,7 @@ class Scene4 extends Phaser.Scene{
                     this.reni.y=510;
                     this.deva.x=330;
                     this.deva.y=510;
+                    this.vida-=1;
                 }
                 if (this.laser4.body.touching.up){
                     this.reni.setVelocity(0,0);
@@ -1274,6 +1278,7 @@ class Scene4 extends Phaser.Scene{
                     this.reni.y=510;
                     this.deva.x=330;
                     this.deva.y=510;
+                    this.vida-=1;
                 }
                 if (this.laser5.body.touching.up){
                     this.reni.setVelocity(0,0);
@@ -1282,6 +1287,7 @@ class Scene4 extends Phaser.Scene{
                     this.reni.y=510;
                     this.deva.x=330;
                     this.deva.y=510;
+                    this.vida-=1;
                 }
                 if (this.laser6.body.touching.up){
                     this.reni.setVelocity(0,0);
@@ -1290,6 +1296,7 @@ class Scene4 extends Phaser.Scene{
                     this.reni.y=510;
                     this.deva.x=330;
                     this.deva.y=510;
+                    this.vida-=1;
                 }
                 if (this.laser7.body.touching.up){
                     this.deva.setVelocity(0,0);
@@ -1298,6 +1305,7 @@ class Scene4 extends Phaser.Scene{
                     this.reni.y=510;
                     this.deva.x=330;
                     this.deva.y=510;
+                    this.vida-=1;
                 }
                 if (this.laser8.body.touching.up){
                     this.reni.setVelocity(0,0);
@@ -1306,6 +1314,101 @@ class Scene4 extends Phaser.Scene{
                     this.reni.y=510;
                     this.deva.x=330;
                     this.deva.y=510;
+                    this.vida-=1;
+                }
+               
+                 if (this.laserv1.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                    this.vida-=1;
+                }
+                if (this.laserv2.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                    this.vida-=1;
+                }
+                if (this.laserv4.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                    this.vida-=1;
+                }
+                if (this.laserv5.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                    this.vida-=1;
+                }
+                if (this.laserv6.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                    this.vida-=1;
+                }
+                if (this.laserv7.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                    this.vida-=1;
+                }
+                if (this.laserv8.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                    this.vida-=1;
+                }
+                if (this.laserv10.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                    this.vida-=1;
+                }
+                if (this.laserv11.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                    this.vida-=1;
+                }
+                if (this.laserv12.body.touching.right){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                    this.vida-=1;
+                }
+                if (this.vida<=0){
+                    this.scene.start('Mapa_Final');
                 }
                 if(this.boton1off.body.touching.up){
                     this.boton1on.visible=true;
@@ -1315,86 +1418,7 @@ class Scene4 extends Phaser.Scene{
                     this.plataforma4.visible=true;
                     this.plataforma4.body.enable=true;
                  }
-                 if (this.laserv1.body.touching.right){
-                    this.reni.setVelocity(0,0);
-                    this.deva.setVelocity(0,0);
-                    this.reni.x=330;
-                    this.reni.y=510;
-                    this.deva.x=330;
-                    this.deva.y=510;
-                }
-                if (this.laserv2.body.touching.right){
-                    this.reni.setVelocity(0,0);
-                    this.deva.setVelocity(0,0);
-                    this.reni.x=330;
-                    this.reni.y=510;
-                    this.deva.x=330;
-                    this.deva.y=510;
-                }
-                if (this.laserv4.body.touching.right){
-                    this.reni.setVelocity(0,0);
-                    this.deva.setVelocity(0,0);
-                    this.reni.x=330;
-                    this.reni.y=510;
-                    this.deva.x=330;
-                    this.deva.y=510;
-                }
-                if (this.laserv5.body.touching.right){
-                    this.reni.setVelocity(0,0);
-                    this.deva.setVelocity(0,0);
-                    this.reni.x=330;
-                    this.reni.y=510;
-                    this.deva.x=330;
-                    this.deva.y=510;
-                }
-                if (this.laserv6.body.touching.right){
-                    this.reni.setVelocity(0,0);
-                    this.deva.setVelocity(0,0);
-                    this.reni.x=330;
-                    this.reni.y=510;
-                    this.deva.x=330;
-                    this.deva.y=510;
-                }
-                if (this.laserv7.body.touching.right){
-                    this.reni.setVelocity(0,0);
-                    this.deva.setVelocity(0,0);
-                    this.reni.x=330;
-                    this.reni.y=510;
-                    this.deva.x=330;
-                    this.deva.y=510;
-                }
-                if (this.laserv8.body.touching.right){
-                    this.reni.setVelocity(0,0);
-                    this.deva.setVelocity(0,0);
-                    this.reni.x=330;
-                    this.reni.y=510;
-                    this.deva.x=330;
-                    this.deva.y=510;
-                }
-                if (this.laserv10.body.touching.right){
-                    this.reni.setVelocity(0,0);
-                    this.deva.setVelocity(0,0);
-                    this.reni.x=330;
-                    this.reni.y=510;
-                    this.deva.x=330;
-                    this.deva.y=510;
-                }
-                if (this.laserv11.body.touching.right){
-                    this.reni.setVelocity(0,0);
-                    this.deva.setVelocity(0,0);
-                    this.reni.x=330;
-                    this.reni.y=510;
-                    this.deva.x=330;
-                    this.deva.y=510;
-                }
-                if (this.laserv12.body.touching.right){
-                    this.reni.setVelocity(0,0);
-                    this.deva.setVelocity(0,0);
-                    this.reni.x=330;
-                    this.reni.y=510;
-                    this.deva.x=330;
-                    this.deva.y=510;
-                }
+                 
                
 
                  
@@ -1530,12 +1554,14 @@ class Scene4 extends Phaser.Scene{
                     this.deva.setVelocity(0,0);
                     this.deva.x=330;
                     this.deva.y=480;
+                    this.vida-=1;
     
                 }
                  if(this.reni.y>3300){
                     this.reni.setVelocity(0,0);
                     this.reni.x=330;
                     this.reni.y=480;
+                     this.vida-=1;
                 }
 
                 //Nombres
