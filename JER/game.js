@@ -215,7 +215,7 @@ class Scene1 extends Phaser.Scene{
         }, this);
         this.tutorial.on('pointerdown', function () {
 
-            this.scene.start('Game Over');
+            this.scene.start('Mapa');
             this.musica.stop();
         }, this);
 
@@ -331,7 +331,7 @@ class Scene1 extends Phaser.Scene{
             
             this.deva.on('pointerdown',function(){
 
-                this.scene.start('Mapa');
+                this.scene.start('Mapa_Final');
 
             },this);
 
@@ -352,7 +352,7 @@ class Scene1 extends Phaser.Scene{
             
             this.reni.on('pointerdown',function(){
 
-                this.scene.start('Mapa');
+                this.scene.start('Mapa_Final');
 
             },this);
 
@@ -451,7 +451,7 @@ class Scene4 extends Phaser.Scene{
             this.caja.setDrag(10000,0);
             this.deva = this.physics.add.sprite(100,420,'Deva');
             this.reni = this.physics.add.sprite(150,420,'Reni');
-            this.vidas = this.physics.add.staticSprite(100, 80, 'Vida_Completa');
+            this.vida=3;
             this.tilesItems = this.mapa.addTilesetImage('items', 'tilesItems');
             this.palancaOff = this.physics.add.staticSprite(1400, config.height-150, 'PalancaOff');
             this.portal = this.physics.add.staticSprite(config.width+2092, config.height-140, 'Portal');
@@ -648,6 +648,7 @@ class Scene4 extends Phaser.Scene{
             
             //Si se caen se restauran a su origen
                 if(this.deva.y>620){
+                    this.vida-=1;
                     this.deva.x=150;
                     this.deva.y=400;
                 
@@ -656,6 +657,7 @@ class Scene4 extends Phaser.Scene{
 
                 }
                 if(this.reni.y>620){
+                    this.vida-=1;
                     this.reni.x=150;
                     this.reni.y=400;
                     
@@ -716,7 +718,7 @@ class Scene4 extends Phaser.Scene{
                 if(this.portal.body.touching.up && this.downButton.isDown && this.cursors.down.isDown)
                 {
                     this.sonidoPortal.play();
-                    this.scene.start('Mapa_Final');
+                    this.scene.start('Inicio');
                 }
         }   
          
@@ -1413,7 +1415,7 @@ class Scene4 extends Phaser.Scene{
                     this.vida-=1;
                 }
                 if (this.vida<=0){
-                    this.scene.start('Mapa_Final');
+                    this.scene.start('Game Over');
                 }
                 if(this.boton1off.body.touching.up){
                     this.boton1on.visible=true;
