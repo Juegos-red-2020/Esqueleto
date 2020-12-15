@@ -1620,7 +1620,8 @@ class Scene4 extends Phaser.Scene{
                     this.reni.body.setVelocityY(-200);
                    }
 
-               /* if((this.cajas.body.touching.left&&this.rightButton.isDown) || (this.cajas.body.touching.right&&this.lefttButton.isDown))
+               // Sonido caja
+                if((this.caja.body.touching.left&&this.cursors.right.isDown) || (this.caja.body.touching.right&&this.cursors.left.isDown))
                 {
 
                     if(!this.sonidoCaja.isPlaying)
@@ -1629,7 +1630,7 @@ class Scene4 extends Phaser.Scene{
                 }else
                 {
                     this.sonidoCaja.stop();
-                }*/
+                }
 
                 //Controles de Reni
                 if (this.lefttButton.isDown)
