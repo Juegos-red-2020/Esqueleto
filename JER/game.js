@@ -1419,6 +1419,14 @@ class Scene4 extends Phaser.Scene{
                 if (this.vida<=0){
                     this.scene.start('Game Over');
                 }
+                
+                // Caja se reinicia
+               if(this.caja2.y > 3300)
+                {
+                    this.caja2.x = 480;
+                    this.caja2.y = 800;
+                }
+                
                 if(this.boton1off.body.touching.up){
                     this.boton1on.visible=true;
                     this.boton1on.body.enable=true;
@@ -1427,9 +1435,6 @@ class Scene4 extends Phaser.Scene{
                     this.plataforma4.visible=true;
                     this.plataforma4.body.enable=true;
                  }
-                 
-               
-
                  
                  if(this.boton2off.body.touching.up){
                     this.boton2on.visible=true;
