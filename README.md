@@ -95,11 +95,11 @@ DIAGRAMA DE FLUJO DE PANTALLAS
 PANTALLAS
 Menú
 
-![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/Inicio.png>)
+![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/Menu.PNG>)
 
 En el menú principal podemos seleccionar a qué pantalla ir. Jugar nos lleva a la pantalla de selección de personaje. En tutorial nos lleva al nivel tutorial, un nivel más sencillo con instrucciones para que los jugadores aprendan las mecánicas. Créditos lleva a la pantalla de créditos y salir cierra el juego.
 Créditos
-![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/JER/Assets/Creditos2.png>)
+![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/Inicio.png>)
 
 En esta pantalla podemos ver a las personas que han trabajado en el juego. Aparece al terminar el nivel principal, aunque también se puede acceder a ella desde el menú.
 Selección de personaje
