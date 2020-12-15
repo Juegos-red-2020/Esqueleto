@@ -97,6 +97,7 @@ class Scene0 extends Phaser.Scene{
         this.load.image('img_tuto_abajo','Assets/flecha_abajo_reni.png');
         this.load.image('img_tuto_portal','Assets/tuto_portal.png');
         this.load.image('img_tuto_empujar','Assets/tuto_empujar_caja.png');
+        this.load.image('transparencia','Assets/Transparencia.png');
         
         //ESCENA5
         this.load.image('tilesEntorno1', 'Assets/mapa/Tiles_Entorno.png');
@@ -461,8 +462,8 @@ class Scene4 extends Phaser.Scene{
             this.img_tuto_abajo = this.physics.add.staticSprite(1400, config.height-230, 'img_tuto_abajo');
             this.img_tuto_portal = this.physics.add.staticSprite(config.width+2092, config.height-400, 'img_tuto_portal');
             this.img_tuto_empujar = this.physics.add.staticSprite(config.width, config.height-230, 'img_tuto_empujar');
-            this.muroderechalimite = this.physics.add.staticSprite(3215, 470, '');
-            this.muroizqlimite = this.physics.add.staticSprite(0, 470, '');
+            this.muroderechalimite = this.physics.add.staticSprite(3215, 470, 'transparencia');
+            this.muroizqlimite = this.physics.add.staticSprite(0, 470, 'transparencia');
             //this.escalera=this.physics.add.staticImage(850,450,'Escalera');
             //this.escalera.body.enable=false;
             //this.escalera.visible=false;
