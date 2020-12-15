@@ -608,7 +608,7 @@ class Scene4 extends Phaser.Scene{
          //Controles Deva
                 if (this.cursors.left.isDown)
                 {
-                    this.deva.setVelocityX(-250);
+                    this.deva.setVelocityX(-300);
                     this.deva.anims.play('caminarDeva', true);
                     this.deva.flipX = true;
 
@@ -618,7 +618,7 @@ class Scene4 extends Phaser.Scene{
                 }
                 else if (this.cursors.right.isDown)
                 {
-                    this.deva.setVelocityX(250);
+                    this.deva.setVelocityX(300);
                     this.deva.anims.play('caminarDeva', true);
                     this.deva.flipX = false;
 
