@@ -862,7 +862,7 @@ class Scene4 extends Phaser.Scene{
                 this.escalera12=this.physics.add.staticImage(4950,1450,'Escalera');
                 this.escalera13=this.physics.add.staticImage(132,1800,'Escalera');
                 this.escalera14=this.physics.add.staticImage(132,2100,'Escalera');
-                this.escalera15=this.physics.add.staticImage(2528,3060,'Escalera');
+                this.escalera16=this.physics.add.staticImage(2528,3060,'Escalera');
                 
                 this.laser=this.physics.add.image(1550,657,'LaserH');
                 this.laser.setBounceX(1);
@@ -1190,6 +1190,8 @@ class Scene4 extends Phaser.Scene{
                 this.physics.add.overlap(this.deva, this.escalera14);
                 this.physics.add.overlap(this.reni, this.escalera15);
                 this.physics.add.overlap(this.deva, this.escalera15);
+                this.physics.add.overlap(this.reni, this.escalera16);
+                this.physics.add.overlap(this.deva, this.escalera16);
 
                 this.physics.add.overlap(this.reni,this.laser);
                 this.physics.add.overlap(this.deva,this.laser);
