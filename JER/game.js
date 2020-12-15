@@ -485,10 +485,7 @@ class Scene4 extends Phaser.Scene{
 
             this.muroderechalimite.body.setSize(0,1000);
             this.muroizqlimite.body.setSize(0,1000);
-            
-            //Vidas
-            this.text = this.add.text(45,20, 'Vidas :', { font: '32px fontGame', fill: '#fff' });
-            
+                        
             //Establecer los assets de el sprite al mapa colisiones del mapa
             this.capaItems = this.mapa.createDynamicLayer('top',this.tilesItems,0,0);
             this.capaItems.setCollisionByExclusion([-1]);
@@ -497,6 +494,10 @@ class Scene4 extends Phaser.Scene{
             this.textReni = this.add.text(this.reni.body.position.x,this.reni.body.position.y, 'Reni', { font: '20px fontGame', fill: '#fff' });
             this.textDeva = this.add.text(this.deva.body.position.x,this.deva.body.position.y, 'Deva', { font: '20px fontGame', fill: '#fff' });
         
+            //Vida
+            this.vidasString = 'Vidas: '
+            this.textVida = this.add.text(45,20,this.vidasString  + this.vida, { font: '32px fontGame', fill: '#fff' });
+            
             // Deva camina
                 this.anims.create({ 
                     key: 'caminarDeva',
@@ -558,8 +559,9 @@ class Scene4 extends Phaser.Scene{
             this.cameras.main.setBounds(0, 0, this.mapa.widthInPixels, this.mapa.heightInPixels);
             //La camara sigue a Reni
             this.cameras.main.startFollow(this.reni);
-
-
+            
+            //Texto Vida siga la cámara
+            this.textVida.setScrollFactor(0);
         }
         
          update ()
@@ -663,6 +665,10 @@ class Scene4 extends Phaser.Scene{
                     
                     this.deva.x=150;
                     this.deva.y=400;
+                }
+            
+                if (this.vida <= 0){
+                    this.scene.start('Game Over');
                 }
             
             //Controles de Reni
