@@ -1336,6 +1336,15 @@ class Scene4 extends Phaser.Scene{
                     this.deva.y=510;
                     this.vida-=1;
                 }
+                 if (this.laser9.body.touching.up){
+                    this.reni.setVelocity(0,0);
+                    this.deva.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=510;
+                    this.deva.x=330;
+                    this.deva.y=510;
+                    this.vida-=1;
+                }
                
                  if (this.laserv1.body.touching.right){
                     this.reni.setVelocity(0,0);
