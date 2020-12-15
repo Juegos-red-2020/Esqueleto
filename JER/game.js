@@ -108,6 +108,8 @@ class Scene0 extends Phaser.Scene{
         this.load.image('Plataforma3','Assets/plataforma_3.jpg');
         this.load.image('Plataforma4','Assets/plataforma_4.jpg');
         this.load.image('Plataforma7','Assets/plataforma_7.jpg');
+        this.load.image('generador_ON','Assets/Generador_electricidad_ON_192x128.png');
+        this.load.image('generador_OFF','Assets/Generador_electricidad_OFF_192x128.png');
         
         //ESCENA6
         this.load.image('Dis', 'Assets/Dis.png');
@@ -772,8 +774,9 @@ class Scene4 extends Phaser.Scene{
                 this.caja1.setDrag(10000,0);
                 this.caja2=this.physics.add.sprite(480, 928, 'cajaOff');
                 this.caja2.setDrag(10000,0);
-                this.caja3=this.physics.add.sprite(284, 1600, 'cajaOff');
+                this.caja3=this.physics.add.sprite(284, 1500, 'generador_ON');
                 this.caja3.setDrag(10000,0);
+                this.caja3.setScale(0.6);
                 this.caja4=this.physics.add.sprite(1696,1600, 'cajaOff');
                 this.caja4.setDrag(10000,0);
                 this.caja5=this.physics.add.sprite(5184,2592, 'cajaOff');
@@ -1441,10 +1444,30 @@ class Scene4 extends Phaser.Scene{
                 }
                 
                 // Caja se reinicia
-               if(this.caja2.y > 3300)
+                if(this.caja2.y > 3300)
                 {
                     this.caja2.x = 480;
                     this.caja2.y = 800;
+                }
+                if(this.caja1.x < 0)
+                {
+                    this.caja2.x = 1260;
+                    this.caja2.y =  524;
+                }
+                if(this.caja2.x < 0)
+                {
+                    this.caja2.x = 480;
+                    this.caja2.y = 800;
+                }
+                if(this.caja3.x < 0)
+                {
+                    this.caja2.x = 284;
+                    this.caja2.y = 1580;
+                }
+                if(this.caja5.x < 4334)
+                {
+                    this.caja2.x = 5184;
+                    this.caja2.y = 2572;
                 }
                 
                 if(this.boton1off.body.touching.up){
