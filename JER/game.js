@@ -658,7 +658,8 @@ class Scene4 extends Phaser.Scene{
                 
                     this.reni.x=150;
                     this.reni.y=400;
-
+                    
+                     this.textVida.text = this.vidasString + this.vida;
                 }
                 if(this.reni.y>620){
                     this.vida-=1;
@@ -667,6 +668,8 @@ class Scene4 extends Phaser.Scene{
                     
                     this.deva.x=150;
                     this.deva.y=400;
+                    
+                     this.textVida.text = this.vidasString + this.vida;
                 }
             
                 if (this.vida <= 0){
@@ -760,10 +763,6 @@ class Scene4 extends Phaser.Scene{
                 this.deva.body.setSize(this.deva.width-30, this.deva.height);
                 this.reni = this.physics.add.sprite(330,500,'Reni');
                 this.reni.body.setSize(this.reni.width-30, this.reni.height);
-
-                //Vida
-                this.vidasString = 'Vidas: '
-                this.textVida = this.add.text(45,20,this.vidasString  + this.vida, { font: '32px fontGame', fill: '#fff' });
 
                 this.tilesItems = this.mapa.addTilesetImage('items' , 'tilesItems');
 
@@ -978,20 +977,17 @@ class Scene4 extends Phaser.Scene{
                 //Sonido Portal
                 this.sonidoPortal = this.sound.add('Portal_sound',{loop: false});
 
-                //Vidas
-                this.vidas = this.add.group();
-                for (var i = 0; i < 4; i++) 
-                {
-                    this.corazones = this.vidas.create(45 + (40 * i), 80, 'Vida');
-                }
-
                 this.capaItems = this.mapa.createDynamicLayer('top',this.tilesItems,0,0);
                 this.capaItems.setCollisionByExclusion([-1]);   
 
                 // Nombre de Reni
                 this.textReni = this.add.text(this.reni.body.position.x,this.reni.body.position.y, 'Reni', { font: '20px fontGame', fill: '#fff' });
                 this.textDeva = this.add.text(this.deva.body.position.x,this.deva.body.position.y, 'Deva', { font: '20px fontGame', fill: '#fff' });
-
+                
+                //Vida
+                this.vidasString = 'Vidas: '
+                this.textVida = this.add.text(45,20,this.vidasString  + this.vida, { font: '32px fontGame', fill: '#fff' });
+                
                 // Deva camina
                 this.anims.create({ 
                     key: 'caminarDeva',
@@ -1266,6 +1262,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.laser1.body.touching.up){
                     this.reni.setVelocity(0,0);
@@ -1275,6 +1273,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.laser2.body.touching.up){
                     this.reni.setVelocity(0,0);
@@ -1284,6 +1284,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.laser3.body.touching.up){
                     this.deva.setVelocity(0,0);
@@ -1293,6 +1295,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.laser4.body.touching.up){
                     this.reni.setVelocity(0,0);
@@ -1302,6 +1306,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                /* if (this.laser5.body.touching.up){
                     this.reni.setVelocity(0,0);
@@ -1320,6 +1326,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.laser7.body.touching.up){
                     this.deva.setVelocity(0,0);
@@ -1329,6 +1337,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.laser8.body.touching.up){
                     this.reni.setVelocity(0,0);
@@ -1338,6 +1348,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                  if (this.laser9.body.touching.up){
                     this.reni.setVelocity(0,0);
@@ -1347,6 +1359,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                     
+                     this.textVida.text = this.vidasString + this.vida;
                 }
                
                  if (this.laserv1.body.touching.right){
@@ -1357,6 +1371,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                     
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.laserv2.body.touching.right){
                     this.reni.setVelocity(0,0);
@@ -1366,6 +1382,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.laserv4.body.touching.right){
                     this.reni.setVelocity(0,0);
@@ -1375,6 +1393,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.laserv5.body.touching.right){
                     this.reni.setVelocity(0,0);
@@ -1384,6 +1404,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.laserv6.body.touching.right){
                     this.reni.setVelocity(0,0);
@@ -1393,6 +1415,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.laserv7.body.touching.right){
                     this.reni.setVelocity(0,0);
@@ -1402,6 +1426,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.laserv8.body.touching.right){
                     this.reni.setVelocity(0,0);
@@ -1411,6 +1437,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.laserv10.body.touching.right){
                     this.reni.setVelocity(0,0);
@@ -1420,6 +1448,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.laserv11.body.touching.right){
                     this.reni.setVelocity(0,0);
@@ -1429,6 +1459,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.laserv12.body.touching.right){
                     this.reni.setVelocity(0,0);
@@ -1438,6 +1470,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=510;
                     this.vida-=1;
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.vida<=0){
                     this.scene.start('Game Over');
@@ -1618,7 +1652,8 @@ class Scene4 extends Phaser.Scene{
                     this.reni.x=330;
                     this.reni.y=480;
                     this.vida-=1;
-    
+                    
+                    this.textVida.text = this.vidasString + this.vida;
                 }
                  if(this.reni.y>3300){
                     this.reni.setVelocity(0,0);
@@ -1628,6 +1663,8 @@ class Scene4 extends Phaser.Scene{
                     this.deva.x=330;
                     this.deva.y=480;
                      this.vida-=1;
+                     
+                     this.textVida.text = this.vidasString + this.vida;
                 }
 
                 //Nombres
