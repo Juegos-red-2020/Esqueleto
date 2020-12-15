@@ -1451,23 +1451,28 @@ class Scene4 extends Phaser.Scene{
                 }
                 if(this.caja1.x < 0)
                 {
-                    this.caja2.x = 1260;
-                    this.caja2.y =  524;
+                    this.caja1.x = 1260;
+                    this.caja1.y =  524;
                 }
                 if(this.caja2.x < 0)
                 {
                     this.caja2.x = 480;
                     this.caja2.y = 800;
                 }
-                if(this.caja3.x < 0)
-                {
-                    this.caja2.x = 284;
-                    this.caja2.y = 1580;
-                }
                 if(this.caja5.x < 4334)
                 {
-                    this.caja2.x = 5184;
-                    this.caja2.y = 2572;
+                    this.caja5.x = 5184;
+                    this.caja5.y = 2572;
+                }
+                if(this.caja3.y > 1728)
+                {
+                    this.caja3.x = 284;
+                    this.caja3.y = 1580;
+                }
+                if(this.caja3.x > 736)
+                {
+                    this.caja3.x = 284;
+                    this.caja3.y = 1580;
                 }
                 
                 if(this.boton1off.body.touching.up){
