@@ -759,7 +759,9 @@ class Scene4 extends Phaser.Scene{
                 this.reni = this.physics.add.sprite(330,500,'Reni');
                 this.reni.body.setSize(this.reni.width-30, this.reni.height);
 
-                this.vidas = this.physics.add.staticSprite(45, 80, 'Vida');
+                //Vida
+                this.vidasString = 'Vidas: '
+                this.textVida = this.add.text(45,20,this.vidasString  + this.vida, { font: '32px fontGame', fill: '#fff' });
 
                 this.tilesItems = this.mapa.addTilesetImage('items' , 'tilesItems');
 
@@ -1239,8 +1241,8 @@ class Scene4 extends Phaser.Scene{
                 //La camara sigue a Reni
                 this.cameras.main.startFollow(this.reni);
                 
-                //Vidas
-                this.text = this.add.text(45,20, 'Vidas :', { font: '32px fontGame', fill: '#fff' });
+                //Texto Vida siga la cámara
+                this.textVida.setScrollFactor(0);
 
                
 
