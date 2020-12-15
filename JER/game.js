@@ -1566,6 +1566,9 @@ class Scene4 extends Phaser.Scene{
                     this.deva.setVelocity(0,0);
                     this.deva.x=330;
                     this.deva.y=480;
+                    this.reni.setVelocity(0,0);
+                    this.reni.x=330;
+                    this.reni.y=480;
                     this.vida-=1;
     
                 }
@@ -1573,6 +1576,9 @@ class Scene4 extends Phaser.Scene{
                     this.reni.setVelocity(0,0);
                     this.reni.x=330;
                     this.reni.y=480;
+                    this.deva.setVelocity(0,0);
+                    this.deva.x=330;
+                    this.deva.y=480;
                      this.vida-=1;
                 }
 
