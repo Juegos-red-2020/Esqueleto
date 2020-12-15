@@ -1627,8 +1627,8 @@ class Scene4 extends Phaser.Scene{
                     this.reni.body.setVelocityY(-200);
                    }
 
-              // Sonido caja
-                if((this.caja1.body.touching.left&&this.cursors.right.isDown) || (this.caja.body.touching.right&&this.cursors.left.isDown))
+             // Sonido caja
+                if((this.caja1.body.touching.left&&this.cursors.right.isDown) || (this.caja1.body.touching.right&&this.cursors.left.isDown))
                 {
 
                     if(!this.sonidoCaja.isPlaying)
@@ -1638,7 +1638,7 @@ class Scene4 extends Phaser.Scene{
                 {
                     this.sonidoCaja.stop();
                 }
-                if((this.caja2.body.touching.left&&this.cursors.right.isDown) || (this.caja.body.touching.right&&this.cursors.left.isDown))
+                if((this.caja2.body.touching.left&&this.cursors.right.isDown) || (this.caja2.body.touching.right&&this.cursors.left.isDown))
                 {
 
                     if(!this.sonidoCaja.isPlaying)
@@ -1648,7 +1648,7 @@ class Scene4 extends Phaser.Scene{
                 {
                     this.sonidoCaja.stop();
                 }
-                if((this.caja3.body.touching.left&&this.cursors.right.isDown) || (this.caja.body.touching.right&&this.cursors.left.isDown))
+                if((this.caja3.body.touching.left&&this.cursors.right.isDown) || (this.caja3.body.touching.right&&this.cursors.left.isDown))
                 {
 
                     if(!this.sonidoCaja.isPlaying)
@@ -1658,7 +1658,7 @@ class Scene4 extends Phaser.Scene{
                 {
                     this.sonidoCaja.stop();
                 }
-                if((this.caja4.body.touching.left&&this.cursors.right.isDown) || (this.caja.body.touching.right&&this.cursors.left.isDown))
+                if((this.caja4.body.touching.left&&this.cursors.right.isDown) || (this.caja4.body.touching.right&&this.cursors.left.isDown))
                 {
 
                     if(!this.sonidoCaja.isPlaying)
@@ -1668,7 +1668,7 @@ class Scene4 extends Phaser.Scene{
                 {
                     this.sonidoCaja.stop();
                 }
-                if((this.caja5.body.touching.left&&this.cursors.right.isDown) || (this.caja.body.touching.right&&this.cursors.left.isDown))
+                if((this.caja5.body.touching.left&&this.cursors.right.isDown) || (this.caja5.body.touching.right&&this.cursors.left.isDown))
                 {
 
                     if(!this.sonidoCaja.isPlaying)
