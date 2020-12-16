@@ -96,7 +96,6 @@ class Scene0 extends Phaser.Scene{
         this.load.image('Escalera','Assets/Escalera.png');
         this.load.image('Laser','Assets/laser.png');
         this.load.image('LaserH','Assets/laserHorizontal.png');
-        this.load.image('img_tuto_abajo','Assets/flecha_abajo_reni.png');
         this.load.image('img_tuto_portal','Assets/tuto_portal.png');
         this.load.image('img_tuto_empujar','Assets/tuto_empujar_caja.png');
         this.load.image('transparencia','Assets/Transparencia.png');
@@ -474,7 +473,6 @@ class Scene4 extends Phaser.Scene{
             this.plataforma.visible=false;
             this.plataforma.body.enable=false;
             this.boton_off= this.physics.add.staticImage(800,472,'Boton_off');
-            this.img_tuto_abajo = this.physics.add.staticSprite(1400, config.height-230, 'img_tuto_abajo');
             this.img_tuto_portal = this.physics.add.staticSprite(config.width+2092, config.height-400, 'img_tuto_portal');
             this.img_tuto_empujar = this.physics.add.staticSprite(config.width, config.height-230, 'img_tuto_empujar');
             this.muroderechalimite = this.physics.add.staticSprite(3215, 470, 'transparencia');
@@ -589,9 +587,6 @@ class Scene4 extends Phaser.Scene{
          this.textDeva.x = this.deva.body.position.x + 40;
          this.textDeva.y = this.deva.body.position.y - 20;
             
-         this.img_tuto_empujar.x = this.caja.body.position.x+70;
-         this.img_tuto_empujar.y = this.caja.body.position.y-50;
-            
          //activar boton 
          if(this.boton_off.body.touching.up){
             this.boton_on=this.physics.add.staticImage(800,472,'Boton_on');
@@ -632,7 +627,6 @@ class Scene4 extends Phaser.Scene{
 
                     if(!this.sonidoDeva.isPlaying)
                     this.sonidoDeva.play();
-                    //this.sonidoDeva.play();
                 }
                 else if (this.cursors.right.isDown)
                 {
