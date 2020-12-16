@@ -175,6 +175,42 @@ Una vez esté Deva en Pl6 puede subir cuidadosamente hasta arriba, donde se encu
 
 
 
+# Referencias
+
+Pturm
+
+https://www.artstation.com/artwork/Er9a2
+
+
+
+Items
+
+https://www.artstation.com/artwork/RYJONX
+
+
+
+Caja(Modificado)
+
+https://www.artstation.com/artwork/1nOAxX
+
+
+
+Tiles Entorno(Modificado)
+
+https://www.artstation.com/artwork/baDzPv
+
+
+
+Escalera(Modificado)
+
+https://imgur.com/r/PixelArt/yALAtR8
+
+
+
+Palanca
+
+https://runwthewolves.tumblr.com/post/168756860046/tiny-pixel-lever-for-my-game-the-wishgranter
+
 
 
 
