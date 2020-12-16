@@ -759,7 +759,7 @@ class Scene4 extends Phaser.Scene{
                
                 nivel='Mapa_Final';
                 
-                this.vida=3;
+                this.vida=7;
                 this.mapa=this.make.tilemap({key:'mapa1'});     
 
                 this.fondo1 = this.physics.add.staticSprite(config.width+1895,config.height+1048,'Fondo_1');
