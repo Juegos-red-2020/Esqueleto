@@ -676,7 +676,7 @@ class Scene4 extends Phaser.Scene{
                 }
             
                 if (this.vida <= 0){
-                    this.game.sound.stopAll();
+                    game.sound.stopAll();
                     this.scene.start('Game Over');
                 }
             
@@ -732,7 +732,7 @@ class Scene4 extends Phaser.Scene{
                 }
                 if(this.portal.body.touching.up && this.downButton.isDown && this.cursors.down.isDown)
                 {
-                    this.game.sound.stopAll();
+                    game.sound.stopAll();
                     this.sonidoPortal.play();
                     this.scene.start('Inicio');
                 }
@@ -1478,7 +1478,7 @@ class Scene4 extends Phaser.Scene{
                     this.textVida.text = this.vidasString + this.vida;
                 }
                 if (this.vida<=0){
-                    this.game.sound.stopAll();
+                    game.sound.stopAll();
                     this.scene.start('Game Over');
                 }
                 
@@ -1817,7 +1817,7 @@ class Scene4 extends Phaser.Scene{
 
                 if(this.portal.body.touching.up && this.downButton.isDown && this.cursors.down.isDown && this.boton3on.body.touching.up && this.boton4on.body.touching.up)
                 {
-                    this.game.sound.stopAll();
+                    game.sound.stopAll();
                     this.sonidoPortal.play();
                     this.scene.start('Créditos');
                     
