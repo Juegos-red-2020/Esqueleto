@@ -1,145 +1,154 @@
-# Esqueleto
-
-GDD Marauder
+# GDD Marauder
 
 
-TÍTULO
-Marauder
-ESTUDIO/DISEÑADORES
-Miguel Gálvez Lucena, Diego Penedo Andrés, Karim Elein Castillo Ordinola, Jose Pablo Baño García.
-GÉNERO
-Plataformas
-CORREOS UNIVERSITARIOS
-m.galvez.2018@alumnos.urjc.es, d.penedo.2018@alumnos.urjc.es, ke.castillo.2017@alumnos.urjc.es, jp.bano.2016@alumnos.urjc.es
-TRELLO
-https://trello.com/invite/b/7TDbjcXg/570ec36ceab6d6e421ffdf338bea6fb6/juegos-en-redes 
-PLATAFORMA
-PC
-VERSIÓN
-1.0
-SINOPSIS DEL JUEGO
-Dos exploradores se encuentran atrapados en una nave abandonada. A medida que avanzan en su búsqueda de una salida, una serie de peligros irán surgiendo y deberán colaborar para superar los obstáculos y buscar una salida.
-CATEGORÍA
-Puzles, acción.
-LICENCIA
-Apache 2.
-DINÁMICAS
-Movimientos de empuje, interacción con el entorno y resolución de puzles.
-PÚBLICO
-Tipo de jugador casual, más dedicado a jóvenes.
+TÍTULO: Marauder
 
+ESTUDIO/DISEÑADORES: Miguel Gálvez Lucena, Diego Penedo Andrés, Karim Elein Castillo Ordinola, Jose Pablo Baño García.
 
-VISIÓN GENERAL DEL JUEGO
+GÉNERO: Plataformas
+
+CORREOS UNIVERSITARIOS: m.galvez.2018@alumnos.urjc.es, d.penedo.2018@alumnos.urjc.es, ke.castillo.2017@alumnos.urjc.es, jp.bano.2016@alumnos.urjc.es
+
+TRELLO: https://trello.com/invite/b/7TDbjcXg/570ec36ceab6d6e421ffdf338bea6fb6/juegos-en-redes 
+
+PLATAFORMA:  PC
+
+VERSIÓN: 1.0
+
+SINOPSIS DEL JUEGO: Dos exploradores se encuentran atrapados en una nave abandonada. A medida que avanzan en su búsqueda de una salida, una serie de peligros irán surgiendo y deberán colaborar para superar los obstáculos y buscar una salida.
+
+CATEGORÍA: Puzles, acción.
+
+LICENCIA: Apache 2.
+
+DINÁMICAS: Movimientos de empuje, interacción con el entorno y resolución de puzles.
+
+PÚBLICO: Tipo de jugador casual, más dedicado a jóvenes.
+
+# VISIÓN GENERAL DEL JUEGO
+
 Marauder es un juego multijugador cooperativo. Dos exploradores, atrapados en el interior de una nave con elementos de futuristas. Al tratarse de un juego de puzles y acción permite al jugador experimentar diversas mecánicas en los puzles. Finalmente, el ritmo del juego sería más lento para ir pensando en los puzles cooperativos que se encuentran dispersos por la nave. El objetivo de los exploradores en encontrar la salida de la nave y salir ambos con vida
-DINÁMICA DEL JUEGO
-Cámara
-En tercera persona tipo plataformas.
-Periféricos
-Teclado
-Controles
-A (Izquierda), D (Derecha), S (abajo), W (salto); Para el segundo personaje, las flechas de dirección, con la misma función.
-Guardar/cargar
-No está implementado, dado que la breve duración del juego no lo hace especialmente necesario.
-PERSONAJES
-Nombre
-Deva
-Descripción
-Son saqueadores de tesoros interestelares, provistos de una capucha y un vestuario que a su vez hace de armadura sencilla.
-Concepto
-Uno de los protagonistas del juego y personaje controlado por el jugador. 
-Momento
-Aparición al principio del juego al ser uno de los principales.
-Habilidades
-Fuerza para empujar objetos pesados.
 
+# DINÁMICA DEL JUEGO
 
+Cámara: En tercera persona tipo plataformas.
 
+Periféricos: Teclado
 
-Nombre
-Reni
-Descripción
-Son saqueadores de tesoros interestelares, provistos de una capucha y un vestuario que a su vez hace de armadura sencilla.
-Concepto
-Uno de los protagonistas del juego y personaje controlado por el jugador. 
-Momento
-Aparición al principio del juego al ser uno de los principales.
-Habilidades
-Agilidad para saltar más alto y escala paredes.
+Controles: A (Izquierda), D (Derecha), S (abajo), W (salto); Para el segundo personaje, las flechas de dirección, con la misma función.
 
+Guardar/cargar: No está implementado, dado que la breve duración del juego no lo hace especialmente necesario.
 
+# PERSONAJES
 
+Nombre: Deva
 
-ARTE CONCEPTUAL
-Guía de estilo
+Descripción: Son saqueadores de tesoros interestelares, provistos de una capucha y un vestuario que a su vez hace de armadura sencilla.
+
+Concepto: Uno de los protagonistas del juego y personaje controlado por el jugador. 
+
+Momento: Aparición al principio del juego al ser uno de los principales.
+
+Habilidades: Fuerza para empujar objetos pesados.
+
+-
+
+Nombre: Reni
+
+Descripción: Son saqueadores de tesoros interestelares, provistos de una capucha y un vestuario que a su vez hace de armadura sencilla.
+
+Concepto: Uno de los protagonistas del juego y personaje controlado por el jugador. 
+
+Momento: Aparición al principio del juego al ser uno de los principales.
+
+Habilidades: Agilidad para saltar más alto y escala paredes.
+
+# ARTE CONCEPTUAL
+
+Guía de estilo:
  
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/Dise%C3%B1o.png>)
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/Principio.jpg>)
 
 
 
-CAMBIOS RESPECTO AL PROTOTIPO
+# CAMBIOS RESPECTO AL PROTOTIPO
+
 El cambio más notable del concepto inicial es la ausencia de Pturm, la criatura que perseguía a los personajes principales. En su lugar, el peligro en esta versión viene de los pozos y los láseres, obstáculos del escenario en los que si uno de los personajes cae, pierde una vida.
 
 La idea original de Pturm como una criatura inteligente era demasiado ambiciosa, así que se decidió dejarlo en un contador; cuando terminase el tiempo Pturm aparecería y sería game over. Sin embargo, consideramos que los obstáculos eran suficiente peligro para que el juego presentase un reto más allá de los puzles y el contador sería algo redundante, por lo que no ha sido implementado.
 
 Otros cambios menores incluyen pantalla de créditos y la eliminación de una sala de espera, ya que el juego no tarda tanto en cargar como para que sea necesaria.
 
-
-
-
-DIAGRAMA DE FLUJO DE PANTALLAS
+# DIAGRAMA DE FLUJO DE PANTALLAS
 
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/Diagrama.jpg>)
 
 
-PANTALLAS
-Menú
+# PANTALLAS
+
+Menú:
 
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/Menu.PNG>)
 
 En el menú principal podemos seleccionar a qué pantalla ir. Jugar nos lleva a la pantalla de selección de personaje. En tutorial nos lleva al nivel tutorial, un nivel más sencillo con instrucciones para que los jugadores aprendan las mecánicas. Créditos lleva a la pantalla de créditos y salir cierra el juego.
-Créditos
+
+Créditos:
+
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/Inicio.png>)
 
 En esta pantalla podemos ver a las personas que han trabajado en el juego. Aparece al terminar el nivel principal, aunque también se puede acceder a ella desde el menú.
-Selección de personaje
 
+Selección de personaje:
 
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/SelecPer.png>)
 
 Al colocar el cursor sobre un personaje, informa al jugador de sus habilidades y controles. Una vez seleccionado, lleva al jugador al nivel principal.
-Nivel
+
+Nivel:
+
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/Gamplay.png>)
 
 Tanto en el nivel principal como en el tutorial se puede ver a ambos personajes en el escenario correspondiente. En la esquina superior izquierda se pueden ver las vidas que les quedan antes del game over. Ambos niveles se explicarán en detalle en el apartado niveles.
-Game Over
+
+Game Over:
 
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/GameOver.png>)
-
 
 Pantalla que aparece cuando el personaje se quedan sin vidas (tienen 3 entre los dos personajes). Permite volver al menú o reintentar el nivel.
 
 
 
 
-Niveles
-Glosario
-Deva: Personaje con la habilidad de empujar cajas
+# Niveles
+
+> Glosario:
+
+Deva: Personaje con la habilidad de empujar cajas.
+
 Reni: Personaje con más velocidad y capaz de saltar distancias más largas que Deva.
+
 C: Caja empujable.
+
 S: Espacio que Reni es capaz de cruzar de un salto, pero Deva se caería.
+
 B: Botón, se activa cuando tiene un gran peso encima. En el nivel tutorial lo puede pisar Reni al saltar desde tanta longitud directamente al botón. En el  nivel principal, los botones solo son activables si Deva empuja una caja encima. Al activarse, normalmente crean o destruyen plataformas.
+
 Pa: Palanca. Función similar a el boton, solo que se activa al contacto de Deva o Reni.
+
 Pl: Plataforma que se crea o destruye al activa un botón o una palanca.
+
 L: Rayo láser que impide el paso. Si lo toca el jugador, pierde una vida y regresa al inicio.
+
 Le: Láser esquivable. Láseres que se mueven de manera intermitente por los que el jugador puede pasar, siempre y cuando lo haga de manera ágil para no tocarlos.
+
 Cg: Caja generador. Funciona como una caja normal pero en realidad es el generador de electricidad de la nave. Al moverlo a su botón, desconecta la corriente eléctrica y todos los láseres desaparecen.
+
 Escaleras: Se puede subir y bajar por ellas.
 
+-
 
-
-
-NIVEL TUTORIAL
+NIVEL TUTORIAL:
 
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/mapaNotas2.png>)
 
@@ -147,8 +156,9 @@ Los personajes comienzan a la izquierda del nivel. Reni es capaz de saltar S1 y 
 
 Reni es capaz de saltar de nuevo S2 sin problemas. Para poder realizar el salto, Deva debe empujar la caja C1 hasta el borde de S2 y que caiga abajo. Subiéndose a la caja, la distancia a saltar es menor y la puede cruzar. Así, ambos son capaces de cruzar todos los huecos y llegar a la salida sin problemas.
 
+-
 
-NIVEL PRINCIPAL
+NIVEL PRINCIPAL:
 
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/mapaNotas.png>)
 
