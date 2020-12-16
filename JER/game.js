@@ -492,7 +492,6 @@ class Scene4 extends Phaser.Scene{
             this.sonidoPortal = this.sound.add('Portal_sound',{loop: false});
             
             //Imagenes tutoriales
-            this.img_tuto_abajo.visible = false;
             this.img_tuto_portal.visible = false;
 
             this.img_tuto_empujar.visible = false;
