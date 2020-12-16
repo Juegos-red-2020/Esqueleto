@@ -598,10 +598,6 @@ class Scene4 extends Phaser.Scene{
          }
             
             //Tuto imagen
-         if(this.palancaOff.body.touching.up)
-         {
-            this.img_tuto_abajo.visible = true;
-         }
          if(this.portal.body.touching.up)
          {
              this.img_tuto_portal.visible = true;
