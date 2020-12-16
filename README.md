@@ -213,7 +213,15 @@ https://runwthewolves.tumblr.com/post/168756860046/tiny-pixel-lever-for-my-game-
 
 
 
+# LICENCIAS
 
+![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/license_certificate_6GYFMNZVPH%20(1).txt>)
+
+![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/license_certificate_92PDVKGTNL%20(2).txt>)
+
+![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/license_certificate_BA9P75WLFJ.txtt>)
+
+![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/license_certificate_DWE46FXV5H%20(1).txt>)
 
 
 
