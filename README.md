@@ -213,7 +213,7 @@ https://runwthewolves.tumblr.com/post/168756860046/tiny-pixel-lever-for-my-game-
 
 
 
-# LICENCIAS
+# LICENCIAS MUSICA
 
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/license_certificate_6GYFMNZVPH%20(1).txt>)
 
