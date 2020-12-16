@@ -1498,11 +1498,11 @@ class Scene4 extends Phaser.Scene{
                     this.caja2.x = 480;
                     this.caja2.y = 800;
                 }
-                if(this.caja5.x < 4334)
+                /*if(this.caja5.x < 4334)
                 {
                     this.caja5.x = 5184;
                     this.caja5.y = 2572;
-                }
+                }*/
                 if(this.caja3.y > 1728)
                 {
                     this.caja3.x = 284;
