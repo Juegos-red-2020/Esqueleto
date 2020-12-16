@@ -61,6 +61,7 @@ class Scene0 extends Phaser.Scene{
         this.load.image('Elige','Assets/Personajes.png');
         this.load.image('Flechas','Assets/Flechas.png');
         this.load.image('WASD','Assets/WASD.png');
+        this.load.audio('M_Personajes','Assets/musica/Lost Voices Soundscape (no whispers).mp3');
 
         //ESCENA3
 
@@ -89,6 +90,7 @@ class Scene0 extends Phaser.Scene{
         this.load.audio('Caja', 'Assets/musica/Caja_arrastrando.wav');
         this.load.audio('Salto', 'Assets/musica/Salto.ogg');
         this.load.audio('Portal_sound', 'Assets/musica/teleport_02.ogg');
+        this.load.audio('M_Niveles','Assets/musica/Space Eternal.mp3');
         this.load.image('Boton_off','Assets/boton_off.png');
         this.load.image('Boton_on','Assets/boton_on.png');
         this.load.image('Escalera','Assets/Escalera.png');
@@ -174,7 +176,7 @@ class Scene1 extends Phaser.Scene{
        this.tutorial = this.physics.add.staticSprite(config.width / 2, config.height / 1.7, 'Tutorial');
        this.creditos=this.physics.add.staticSprite(config.width / 2, config.height / 1.35, 'Creditos');
        this.salirJuego = this.physics.add.staticSprite(config.width / 2, config.height / 1.15, 'SalirJuego');
-       this.musica=this.sound.add('M_Inicio');
+       this.musica=this.sound.add('M_Inicio',{volume:0.3});
        this.musicaBotones = this.sound.add('M_Botones');
        this.musica.play();
 
@@ -295,6 +297,8 @@ class Scene1 extends Phaser.Scene{
             this.deva=this.physics.add.staticSprite(config.width/4,config.height/3,'Deva');
             this.deva.setInteractive();
             this.musicaBotones = this.sound.add('M_Botones');
+            this.musica=this.sound.add('M_Personajes',{volume:0.3});
+            this.musica.play();
          
             this.anims.create({ 
                 key: 'caminarDeva',
@@ -332,7 +336,8 @@ class Scene1 extends Phaser.Scene{
             },this);
             
             this.deva.on('pointerdown',function(){
-
+                
+                this.musica.stop();
                 this.scene.start('Mapa_Final');
 
             },this);
@@ -353,7 +358,8 @@ class Scene1 extends Phaser.Scene{
             },this);
             
             this.reni.on('pointerdown',function(){
-
+                
+                this.musica.stop();
                 this.scene.start('Mapa_Final');
 
             },this);
@@ -374,6 +380,7 @@ class Scene1 extends Phaser.Scene{
 
             this.salir.on('pointerdown', function () {
 
+                this.musica.stop();
                 this.scene.start('Inicio');
                 
             }, this);
@@ -472,9 +479,10 @@ class Scene4 extends Phaser.Scene{
             this.img_tuto_empujar = this.physics.add.staticSprite(config.width, config.height-230, 'img_tuto_empujar');
             this.muroderechalimite = this.physics.add.staticSprite(3215, 470, 'transparencia');
             this.muroizqlimite = this.physics.add.staticSprite(0, 470, 'transparencia');
-            //this.escalera=this.physics.add.staticImage(850,450,'Escalera');
-            //this.escalera.body.enable=false;
-            //this.escalera.visible=false;
+
+            //Musica
+            this.musica=this.sound.add('M_Niveles',{volume:0.2});
+            this.musica.play();
             // Sonido de pasos
             this.sonidoDeva = this.sound.add('Pasos',{loop: true});
             this.sonidoReni = this.sound.add('Pasos',{loop: true});
@@ -735,6 +743,7 @@ class Scene4 extends Phaser.Scene{
                 }
                 if(this.portal.body.touching.up && this.downButton.isDown && this.cursors.down.isDown)
                 {
+                    this.game.sound.stopAll();
                     this.sonidoPortal.play();
                     this.scene.start('Inicio');
                 }
@@ -968,12 +977,11 @@ class Scene4 extends Phaser.Scene{
                 this.laserv12.setScale(2);
                 this.laserv12.setVelocityY(500);
 
-
-
-
                
                
-
+                //Musica
+                this.musica=this.sound.add('M_Niveles',{volume:0.2});
+                this.musica.play();
                 // Sonido de pasos
                 this.sonidoDeva = this.sound.add('Pasos',{loop: true});
                 this.sonidoReni = this.sound.add('Pasos',{loop: true});
@@ -1820,6 +1828,7 @@ class Scene4 extends Phaser.Scene{
 
                 if(this.portal.body.touching.up && this.downButton.isDown && this.cursors.down.isDown && this.boton3on.body.touching.up && this.boton4on.body.touching.up)
                 {
+                    this.game.sound.stopAll();
                     this.sonidoPortal.play();
                     this.scene.start('Créditos');
                     
