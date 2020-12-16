@@ -1819,7 +1819,7 @@ class Scene4 extends Phaser.Scene{
                 {
                     game.sound.stopAll();
                     this.sonidoPortal.play();
-                    this.scene.start('Créditos');
+                    this.scene.start('Creditos');
                     
                 }
                 
