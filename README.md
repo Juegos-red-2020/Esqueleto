@@ -51,7 +51,7 @@ Momento: Aparición al principio del juego al ser uno de los principales.
 
 Habilidades: Fuerza para empujar objetos pesados.
 
--
+>_
 
 Nombre: Reni
 
@@ -70,6 +70,8 @@ Guía de estilo:
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/Dise%C3%B1o.png>)
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/Principio.jpg>)
 
+![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/map_Grande.png>)
+
 
 
 # CAMBIOS RESPECTO AL PROTOTIPO
@@ -87,31 +89,31 @@ Otros cambios menores incluyen pantalla de créditos y la eliminación de una sa
 
 # PANTALLAS
 
-Menú:
+>Menú:
 
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/Menu.PNG>)
 
 En el menú principal podemos seleccionar a qué pantalla ir. Jugar nos lleva a la pantalla de selección de personaje. En tutorial nos lleva al nivel tutorial, un nivel más sencillo con instrucciones para que los jugadores aprendan las mecánicas. Créditos lleva a la pantalla de créditos y salir cierra el juego.
 
-Créditos:
+>Créditos:
 
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/Inicio.png>)
 
 En esta pantalla podemos ver a las personas que han trabajado en el juego. Aparece al terminar el nivel principal, aunque también se puede acceder a ella desde el menú.
 
-Selección de personaje:
+>Selección de personaje:
 
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/SelecPer.png>)
 
 Al colocar el cursor sobre un personaje, informa al jugador de sus habilidades y controles. Una vez seleccionado, lleva al jugador al nivel principal.
 
-Nivel:
+>Nivel:
 
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/Gamplay.png>)
 
 Tanto en el nivel principal como en el tutorial se puede ver a ambos personajes en el escenario correspondiente. En la esquina superior izquierda se pueden ver las vidas que les quedan antes del game over. Ambos niveles se explicarán en detalle en el apartado niveles.
 
-Game Over:
+>Game Over:
 
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/GameOver.png>)
 
@@ -122,7 +124,7 @@ Pantalla que aparece cuando el personaje se quedan sin vidas (tienen 3 entre los
 
 # Niveles
 
-> Glosario:
+>Glosario:
 
 Deva: Personaje con la habilidad de empujar cajas.
 
@@ -146,7 +148,7 @@ Cg: Caja generador. Funciona como una caja normal pero en realidad es el generad
 
 Escaleras: Se puede subir y bajar por ellas.
 
--
+>_
 
 NIVEL TUTORIAL:
 
@@ -156,7 +158,7 @@ Los personajes comienzan a la izquierda del nivel. Reni es capaz de saltar S1 y 
 
 Reni es capaz de saltar de nuevo S2 sin problemas. Para poder realizar el salto, Deva debe empujar la caja C1 hasta el borde de S2 y que caiga abajo. Subiéndose a la caja, la distancia a saltar es menor y la puede cruzar. Así, ambos son capaces de cruzar todos los huecos y llegar a la salida sin problemas.
 
--
+>_
 
 NIVEL PRINCIPAL:
 
