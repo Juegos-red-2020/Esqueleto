@@ -1,5 +1,6 @@
 //MARAUDER
 var loginCompleto = false;
+var lastTimeConnected=null;
 class Scene0 extends Phaser.Scene {
 
 
@@ -124,11 +125,14 @@ class Scene0 extends Phaser.Scene {
 
         $("#aceptar").show();
         $("#nombre").show();
+        $("#password").show();
 
         $("#aceptar").click(function () {
 
             $("#aceptar").hide();
             $("#nombre").hide();
+            $("#password").hide();
+            lastTimeConnected=new Date().getTime();
             loginCompleto = true;
 
 
@@ -149,7 +153,10 @@ class Scene0 extends Phaser.Scene {
 
                 var data = {
 
-                    player: $("#nombre").val()
+                    name: $("#nombre").val(),
+                    password:$("#password").val(),
+                    lastTimeConnected:lastTimeConnected,
+                    id:$("#nombre").val()+$("#password").val()
 
 
                 };
@@ -1938,14 +1945,16 @@ class Scene7 extends Phaser.Scene {
                 })
 
             });
-/*
+
+            lastTimeConnected=new Date().getTime();
+            /*
             $(document).ready(function () {
 
                 $.ajax({
 
-                    type: "POST",
-                    url: "http://127.0.0.1:8080/players" + "/" + $("#nombre").val(),
-                    data: JSON.stringify(data),
+                    type: "PUT",
+                    url: "http://127.0.0.1:8080/players"+$("#nombre").val(),
+                    data: JSON.stringify(lastTimeConnected),
                     headers: {
                         "Content-Type": "application/json"
                     }
