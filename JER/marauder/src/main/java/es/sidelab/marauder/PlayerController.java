@@ -15,27 +15,33 @@ public class PlayerController {
 
 	private List<Player> playerList = new ArrayList<>();
 	private List<String> playerNames = new ArrayList<>();
-	private Timestamp updateTime= new Timestamp(System.currentTimeMillis());
-	private int id=0;
+	private Timestamp updateTime= new Timestamp(System.currentTimeMillis());;
+	private int id;
 	
 	private void readList() {
 		
-	
+		updateTime= new Timestamp(System.currentTimeMillis());;
+		if(!playerList.isEmpty())
 		for (int i = 0; i < playerList.size(); i++) {
 
-			if (updateTime.getTime() - playerList.get(i).getLastTimeConnected().getTime() > 4) {
-
+			if (updateTime.getTime() - playerList.get(i).getLastTimeConnected().getTime() > 5000) {
+	
 				playerList.remove(i);
-
 			}
-
+			/*
+for(int j=0;j<playerList.size();j++) {
+	
+	
+	
+	playerList.get(j).setId(playerList.get(j).getId()-1);
+}*/
 		}
 
 	}
 	
 	
 	private void readNames() {
-
+		if(!playerList.isEmpty())
 		for (int i = 0; i < playerList.size(); i++) {
 
 			playerNames.add(playerList.get(i).getName());
@@ -54,28 +60,60 @@ public class PlayerController {
 		
 		return playerNames;
 	}
+	@GetMapping("/players/lastTime/{id}")
+	public Timestamp getLastTime(@PathVariable int id) {
+		updateTime=new Timestamp(System.currentTimeMillis());
+		if(!playerList.isEmpty())
+		for(int i=0;i<playerList.size();i++) {
+			
+			if(playerList.get(i).getId()==id){
+				playerList.get(i).setLastTimeConnected(updateTime);
+				return playerList.get(i).getLastTimeConnected();
+			}
+			
+				
+		}
+		
+		return null;
+		
+		
+		
+	}
 
 	@PostMapping("/players")
-	public ResponseEntity<Boolean> addPlayer(@RequestBody Player player) {
+	public int addPlayer(@RequestBody Player player) {
 
+		//Timestamp t=new Timestamp(System.currentTimeMillis());
+		//player.setLastTimeConnected(t);
 		player.setId(id);
-		id++;
 		playerList.add(player);
+		
+	
+		id++;
+		
 
-		return new ResponseEntity<>(true, HttpStatus.CREATED);
+		return player.getId();
 	}
 	
-	
-	@PutMapping("/players/{nombre}")
-	public ResponseEntity<Boolean> addTime(@PathVariable String nombre, @RequestBody Timestamp t) {
+	/*
+	@PutMapping("/players/{id}")
+	public ResponseEntity<Boolean> addTime(@PathVariable int id, @RequestBody Timestamp t) {
+System.out.println(t.getTime());
+if(!playerList.isEmpty())
+		for(int i=0;i<playerList.size();i++) {
+			
+			if(playerList.get(i).getId()==id) {
+				playerList.get(i).setLastTimeConnected(t);
+			}
+			
+		}
 
-		int i=playerNames.indexOf(nombre);
-		playerList.get(i).setLastTimeConnected(t);
+		
 		
 		
 		return new ResponseEntity<>(true, HttpStatus.OK);
 	}
-	
+	*/
 	
 	
 }
