@@ -228,5 +228,17 @@ https://runwthewolves.tumblr.com/post/168756860046/tiny-pixel-lever-for-my-game-
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/license_certificate_DWE46FXV5H%20(1).txt>)
 
 # API REST
+>Diagrama:
+
 ![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/Untitled%20Diagram.png>)
+
+>Instrucciones
+
+1.    Instalar la extensión Web Server for Chrome
+2.    Establecer la ruta del Index.html del juego
+3.    Ingresar a la Web Server URL que está establecida
+4.    Se abrirá el juego en el explorador de Chrome
+5.    Ejecutar el archivo “Application_Server.jar”
+6.    El Juego se conectará al servidor
+
 
