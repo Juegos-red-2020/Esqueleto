@@ -1,6 +1,7 @@
 //MARAUDER
 var loginCompleto = false;
-var lastTimeConnected=null;
+var lastTimeConnected=new Date();
+var id=null;
 class Scene0 extends Phaser.Scene {
 
 
@@ -156,7 +157,7 @@ class Scene0 extends Phaser.Scene {
                     name: $("#nombre").val(),
                     password:$("#password").val(),
                     lastTimeConnected:lastTimeConnected,
-                    id:$("#nombre").val()+$("#password").val()
+                    id:0
 
 
                 };
@@ -167,10 +168,11 @@ class Scene0 extends Phaser.Scene {
                     headers: {
                         "Content-Type": "application/json"
                     },
+                    dataType:"json"
 
 
-                }).done(function (data) {
-                    console.log(JSON.stringify(data) + " ha sido registrado");
+                }).done(function (idJug) {
+                    id=idJug;
                 });
 
             })
@@ -1945,29 +1947,34 @@ class Scene7 extends Phaser.Scene {
                 })
 
             });
-
-            lastTimeConnected=new Date().getTime();
-            /*
+            if(id!=null){
             $(document).ready(function () {
 
                 $.ajax({
 
-                    type: "PUT",
-                    url: "http://127.0.0.1:8080/players"+$("#nombre").val(),
-                    data: JSON.stringify(lastTimeConnected),
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
+                    type: "GET",
+                    url: "http://127.0.0.1:8080/players/lastTime/"+id,
+                    dataType: "json"
 
                 }).fail(function () {
 
-                    clienteConectado = false;
-                }).done(function (check) {
-                    clienteConectado = check;
+                    fallosServidor += 1;
+                    if (fallosServidor > 2) {
+
+                        errorServidor = "Servidor desconectado";
+
+                    }
+                }).done(function (data) {
+
+                    errorServidor = "Servidor conectado";
+                    fallosServidor = 0;
+                    lastTimeConnected = JSON.stringify(data);
                 })
 
             });
-*/
+        }
+
+
             tiempoRespuesta -= 1000;
             this.listaJugadores.destroy();
             this.listaJugadores = this.add.text(100, 100, listaJugadores);
