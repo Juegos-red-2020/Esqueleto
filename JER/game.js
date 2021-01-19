@@ -1,5 +1,5 @@
 //MARAUDER
-var loginCompleto = false;
+
 class Scene0 extends Phaser.Scene {
 
 
@@ -124,11 +124,15 @@ class Scene0 extends Phaser.Scene {
 
         $("#aceptar").show();
         $("#nombre").show();
+        $("#password").show();
 
         $("#aceptar").click(function () {
 
             $("#aceptar").hide();
             $("#nombre").hide();
+            $("#password").hide();
+            lastTimeConnected=new Date().getTime();
+
             loginCompleto = true;
 
 
@@ -149,7 +153,10 @@ class Scene0 extends Phaser.Scene {
 
                 var data = {
 
-                    player: $("#nombre").val()
+                    name: $("#nombre").val(),
+                    password:$("#password").val(),
+                    lastTimeConnected:lastTimeConnected,
+                    id:0
 
 
                 };
@@ -160,10 +167,11 @@ class Scene0 extends Phaser.Scene {
                     headers: {
                         "Content-Type": "application/json"
                     },
+                    dataType:"json"
 
 
-                }).done(function (data) {
-                    console.log(JSON.stringify(data) + " ha sido registrado");
+                }).done(function (idJug) {
+                    id=idJug;
                 });
 
             })
@@ -1906,6 +1914,7 @@ class Scene7 extends Phaser.Scene {
 
         this.listaJugadores = this.add.text(100, 100, "");
         this.mensajeError = this.add.text(100, 400, "");
+        this.nJugadores=this.add.text(100, 500, "");
     }
 
     update(time, delta) {
@@ -1938,38 +1947,65 @@ class Scene7 extends Phaser.Scene {
                 })
 
             });
-/*
+            if(id!=null){
             $(document).ready(function () {
 
                 $.ajax({
 
-                    type: "POST",
-                    url: "http://127.0.0.1:8080/players" + "/" + $("#nombre").val(),
-                    data: JSON.stringify(data),
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
+                    type: "GET",
+                    url: "http://127.0.0.1:8080/players/lastTime/"+id,
+                    dataType: "json"
 
                 }).fail(function () {
 
-                    clienteConectado = false;
-                }).done(function (check) {
-                    clienteConectado = check;
+                    fallosServidor += 1;
+                    if (fallosServidor > 2) {
+
+                        errorServidor = "Servidor desconectado";
+
+                    }
+                }).done(function (data) {
+
+                    errorServidor = "Servidor conectado";
+                    fallosServidor = 0;
+                    lastTimeConnected = JSON.stringify(data);
                 })
 
             });
-*/
+
+
+            $(document).ready(function () {
+
+                $.ajax({
+                    type: "GET",
+                    url: "http://127.0.0.1:8080/player",
+                    dataType:"json"
+
+
+                }).done(function (numJugadores) {
+                    nJug=numJugadores;
+                 
+                });
+
+            })
+
+        }
+
+
             tiempoRespuesta -= 1000;
             this.listaJugadores.destroy();
-            this.listaJugadores = this.add.text(100, 100, listaJugadores);
+            this.listaJugadores = this.add.text(100, 100, "Exploradores en línea: \n\n"+listaJugadores,{ font: '30px fontGame', fill: '#fff' });
             this.mensajeError.destroy();
-            this.mensajeError = this.add.text(100, 400, errorServidor);
+            this.mensajeError = this.add.text(100, 400, "Estado del servidor: \n\n"+errorServidor,{ font: '30px fontGame', fill: '#fff' });
+            this.nJugadores.destroy();
+            this.nJugadores=this.add.text(100, 500,"Número de exploradores \nhasta la fecha: "+ nJug,{ font: '30px fontGame', fill: '#fff' });
         }
 
     }
 
-}///////
-var clienteConectado = true;
+}
+
+var nJug="";
 var fallosServidor = 0;
 var errorServidor = "";
 var config = {
@@ -1997,6 +2033,10 @@ var tiempoRespuesta = 0;
 var nivel = null;
 var game = new Phaser.Game(config);
 var listaJugadores = "";
+var loginCompleto = false;
+var lastTimeConnected=new Date();
+var id=null;
+
 var jugadores = new Phaser.Game({
 
     type: Phaser.auto,
