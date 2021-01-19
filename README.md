@@ -84,10 +84,14 @@ Otros cambios menores incluyen pantalla de créditos y la eliminación de una sa
 
 # DIAGRAMA DE FLUJO DE PANTALLAS
 
-![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/Diagrama.jpg>)
+![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/Diagrama_2.jpg>)
 
 
 # PANTALLAS
+>Login:
+
+![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/NuevaPantallaInicio.PNG>)
+
 
 >Menú:
 
@@ -223,5 +227,6 @@ https://runwthewolves.tumblr.com/post/168756860046/tiny-pixel-lever-for-my-game-
 
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/license_certificate_DWE46FXV5H%20(1).txt>)
 
-
+# API REST
+![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/Untitled%20Diagram.png>)
 
