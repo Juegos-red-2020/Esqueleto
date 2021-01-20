@@ -252,7 +252,7 @@ https://runwthewolves.tumblr.com/post/168756860046/tiny-pixel-lever-for-my-game-
 
 4.    Se abrirá el juego en el explorador de Chrome
 
-![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/P_4_Juego.PNG>)
+![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/P_4_Juego_modi.PNG>)
 
 5.    Instalar la version de SpringToolsSuite para tu SO 
 
