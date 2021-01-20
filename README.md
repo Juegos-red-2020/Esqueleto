@@ -238,12 +238,34 @@ https://runwthewolves.tumblr.com/post/168756860046/tiny-pixel-lever-for-my-game-
 >Instrucciones
 
 1.    Instalar la extensión Web Server for Chrome
-2.    Establecer la ruta del Index.html del juego
-3.    Ingresar a la Web Server URL que está establecida
-4.    Se abrirá el juego en el explorador de Chrome
-5.    Instalar la version de SpringToolsSuite para tu SO
-6.    Abrir proyecto en STS .
-7.    Ejecutar como aplicación Java, lo que creará el servidor .
-8.    Abrir Juego.
 
+![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/P_1_Web_Server.PNG>)
+
+
+2.    Establecer la ruta del Index.html del juego
+
+![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/P_2_Web_Server.PNG>)
+
+3.    Ingresar a la Web Server URL que está establecida
+
+4.    Se abrirá el juego en el explorador de Chrome
+
+![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/P_4_Juego.PNG>)
+
+5.    Instalar la version de SpringToolsSuite para tu SO 
+
+![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/P_5_Juego.PNG>)
+
+6.    Abrir proyecto en STS .
+
+![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/P_6_Juego.PNG>)
+
+7.    Ejecutar como aplicación Java, lo que creará el servidor .
+
+![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/P_8_Juego.PNG>)
+
+8.    Abrir Juego.
+![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/P_9_Login.PNG>)
+
+![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/P_10_Login.PNG>)
 
