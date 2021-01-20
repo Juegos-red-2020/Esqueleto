@@ -248,6 +248,8 @@ https://runwthewolves.tumblr.com/post/168756860046/tiny-pixel-lever-for-my-game-
 
 3.    Ingresar a la Web Server URL que está establecida
 
+![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/P_3_Web_Server.PNG>)
+
 4.    Se abrirá el juego en el explorador de Chrome
 
 ![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/P_4_Juego.PNG>)
