@@ -92,6 +92,9 @@ Otros cambios menores incluyen pantalla de créditos y la eliminación de una sa
 
 ![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/NuevaPantallaInicio.PNG>)
 
+>Información de conexión:
+
+![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/PantallaInfo.PNG>)
 
 >Menú:
 
