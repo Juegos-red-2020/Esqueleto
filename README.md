@@ -238,7 +238,9 @@ https://runwthewolves.tumblr.com/post/168756860046/tiny-pixel-lever-for-my-game-
 2.    Establecer la ruta del Index.html del juego
 3.    Ingresar a la Web Server URL que está establecida
 4.    Se abrirá el juego en el explorador de Chrome
-5.    Ejecutar el archivo “Application_Server.jar”
-6.    El Juego se conectará al servidor
+5.    Instalar la version de SpringToolsSuite para tu SO
+6.    Abrir proyecto en STS .
+7.    Ejecutar como aplicación Java, lo que creará el servidor .
+8.    Abrir Juego.
 
 
