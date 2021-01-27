@@ -1,21 +1,36 @@
 
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>MARAUDER</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="fuente_juego.css" type="text/css">
-        <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<head>
+<title>MARAUDER</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="fuente_juego.css" type="text/css">
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 <script type="text/javascript" src="phaser.js"></script>
 <script type="module" src="game.js"></script>
+<style>
+	canvas{
+		display: block;
+    	margin: 0 auto;
+	}
+</style>
+</head>
+<body style="background-color: rgb(0, 0, 0);">
+	<input type="text" id="password" placeholder="Contraseña"
+		style="position: absolute; top: 300px; left: 866px; display: none;">
+	<button id="aceptar"
+		style="position: absolute; top: 400px; left: 925px; display: none;">Aceptar</button>
+	<div
+		style="font-family: fontGame; position: absolute; left: -1000px; visibility: hidden;">.</div>
+	<div class="panel">
+		<span>Name: </span><input type="text" id="nombre" placeholder="Nombre" style="position: absolute; top: 250px; left: 866px; display: none"/>
+		<span>Message: </span><input type="text"
+			name="message" id="message" placeholder="Message" maxlength="80"
+			style="width: 150px; position: absolute; top: 330px; left: 5px"  />
+		<button id="send-btn" style="position:absolute; top: 330px;left: 165px">Send</button>
+		<textarea id="chat" rows="20" cols="" style="position:absolute;left: 5px"></textarea>
+	</div>
+</body>
 
-    </head>
-    <body style="background-color: rgb(0, 0, 0);">
-        <input type="text" id="nombre" placeholder="Nombre" style="position: absolute;top: 250px; left: 425px;display: none;"> 
-        <input type="text" id="password" placeholder="Contraseña" style="position: absolute;top: 300px; left: 425px;display: none;"> 
-        <button id="aceptar" style="position: absolute;top: 400px;left: 475px;display: none;">Aceptar</button>
-        <div style="font-family:fontGame; position:absolute; left:-1000px; visibility:hidden;">.</div>
-    </body>
-    
 </html>
