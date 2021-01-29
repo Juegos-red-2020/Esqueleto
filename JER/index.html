@@ -50,18 +50,20 @@
 
 	<input type="password" id="password" placeholder="Contraseña"
 		style="position: absolute; top: 300px; left: 866px; display: none;">
+	<input type="text" id="nombre" placeholder="Nombre"
+		style="position: absolute; top: 270px; left: 866px; display: none;" />
 	<button id="aceptar"
 		style="position: absolute; top: 400px; left: 925px; display: none;">Aceptar</button>
-	<div
-		style="font-family: fontGame; position: absolute; left: -1000px; visibility: hidden;">.</div>
+		
+	<div style="font-family: fontGame; position: absolute; left: -1000px; visibility: hidden;">.</div>
+		
 	<div class="panel">
-		<input type="text" id="nombre" placeholder="Nombre"
-		style="position: absolute; top: 270px; left: 866px; display: none;"/>
-		<input type="text"
-			name="message" id="message" placeholder="Message" maxlength="80"
-			style="width: 150px; position: absolute; top: 330px; left: 5px"  />
-		<button id="send-btn" style="position:absolute; top: 330px;left: 165px">Enviar</button>
-		<textarea id="chat" rows="20" cols="" style="position:absolute;left: 5px; top:10px"></textarea>
+		<input type="text" onfocus="this.value=''" name="message" id="message" placeholder="Message"
+			maxlength="80" style="width: 150px; top: 360px; position: absolute; " />
+		<button id="send-btn"
+			style="position: absolute; top: 360px; left: 175px">Enviar</button>
+		<textarea id="chat" rows="20" cols=""
+		style="top: 50px; position:absolute; background: transparent; color:white; border-color: black"></textarea>
 	</div>
 </body>
 
