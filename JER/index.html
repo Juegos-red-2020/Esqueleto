@@ -17,19 +17,51 @@
 </style>
 </head>
 <body style="background-color: rgb(0, 0, 0);">
-	<input type="text" id="password" placeholder="Contraseña"
+	<script>
+
+	$(document).ready(function() {
+
+		var connection = new WebSocket('ws://127.0.0.1:8080/chat');
+		connection.onerror = function(e) {
+			console.log("WS error: " + e);
+		}
+		connection.onmessage = function(msg) {
+			console.log("WS message: " + msg.data);
+			var message = JSON.parse(msg.data)
+			$('#chat').val($('#chat').val() + "\n" + message.name + ": " + message.message);
+		}
+		connection.onclose = function() {
+			console.log("Closing socket");
+		}
+	
+	
+		$('#send-btn').click(function() {
+			var msg = {
+				name : $('#nombre').val(),
+				message : $('#message').val()
+			}
+		    $('#chat').val($('#chat').val() + "\n" + msg.name + ": " + msg.message);
+			connection.send(JSON.stringify(msg));
+		});
+
+	})
+
+	</script>
+
+	<input type="password" id="password" placeholder="Contraseña"
 		style="position: absolute; top: 300px; left: 866px; display: none;">
 	<button id="aceptar"
 		style="position: absolute; top: 400px; left: 925px; display: none;">Aceptar</button>
 	<div
 		style="font-family: fontGame; position: absolute; left: -1000px; visibility: hidden;">.</div>
 	<div class="panel">
-		<span>Name: </span><input type="text" id="nombre" placeholder="Nombre" style="position: absolute; top: 250px; left: 866px; display: none"/>
-		<span>Message: </span><input type="text"
+		<input type="text" id="nombre" placeholder="Nombre"
+		style="position: absolute; top: 270px; left: 866px; display: none;"/>
+		<input type="text"
 			name="message" id="message" placeholder="Message" maxlength="80"
 			style="width: 150px; position: absolute; top: 330px; left: 5px"  />
-		<button id="send-btn" style="position:absolute; top: 330px;left: 165px">Send</button>
-		<textarea id="chat" rows="20" cols="" style="position:absolute;left: 5px"></textarea>
+		<button id="send-btn" style="position:absolute; top: 330px;left: 165px">Enviar</button>
+		<textarea id="chat" rows="20" cols="" style="position:absolute;left: 5px; top:10px"></textarea>
 	</div>
 </body>
 
