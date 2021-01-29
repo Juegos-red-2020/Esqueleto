@@ -14,12 +14,11 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @EnableWebSocket
 public class App implements WebSocketConfigurer{
 	
-    public static void main( String[] args )
-    {
-        SpringApplication.run(App.class,args);
-    }
-    
-    @Override
+	public static void main(String[] args) {
+		SpringApplication.run(App.class, args);
+	}
+
+	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 		registry.addHandler(createChatHandler(), "/chat")
 			.setAllowedOrigins("*");
