@@ -125,7 +125,10 @@ class Scene0 extends Phaser.Scene {
 		$("#aceptar").show();
 		$("#nombre").show();
 		$("#password").show();
-
+		$("#chat").show();
+		$("#message").show();
+		$("#send-btn").show();
+		
 		$("#aceptar").click(function() {
 
 			$("#aceptar").hide();
