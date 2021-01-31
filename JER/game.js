@@ -4,6 +4,9 @@ var pSeleccionado=false;
 	var msjPersonaje;
 	var movDeva;
 	var movReni;
+	var y;
+	var x;
+	var conectado=false;
 class Scene0 extends Phaser.Scene {
 
 
@@ -255,6 +258,8 @@ class Scene1 extends Phaser.Scene {
 		}, this);
 		this.jugar.on('pointerdown', function() {
 
+			
+			online.send(JSON.stringify("Conectado"));
 			this.scene.start('Personajes');
 			this.musica.stop();
 		}, this);
@@ -351,7 +356,7 @@ class Scene2 extends Phaser.Scene {
 		this.musicaBotones = this.sound.add('M_Botones');
 		this.musica = this.sound.add('M_Personajes', { volume: 0.3 });
 		this.musica.play();
-
+//this.aviso=this.add.text(this)
 		this.anims.create({
 			key: 'caminarDeva',
 			frames: this.anims.generateFrameNumbers('Deva'),
@@ -392,8 +397,14 @@ class Scene2 extends Phaser.Scene {
 		this.deva.on('pointerdown', function() {
 			miPersonaje="Deva";
 			player.send(JSON.stringify("Deva"));
-			this.musica.stop();
-			this.scene.start('Mapa_Final');
+			if(conectado){
+				this.musica.stop();
+				this.scene.start('Mapa_Final');
+			}else{
+
+
+
+			}
 
 		}, this);
 
@@ -415,9 +426,11 @@ class Scene2 extends Phaser.Scene {
 		this.reni.on('pointerdown', function() {
 			miPersonaje="Reni";
 			player.send(JSON.stringify("Reni"));
-
-			this.musica.stop();
-			this.scene.start('Mapa_Final');
+if(conectado){
+	this.musica.stop();
+	this.scene.start('Mapa_Final');
+}
+			
 
 		}, this);
 
@@ -449,18 +462,23 @@ player.onmessage=function(message){
 	pSeleccionado=true;
 	msjPersonaje=JSON.parse(message.data);
 }
-	
+online.onmessage=function(message){
+	conectado=true;
+
+}
 if(pSeleccionado===true){
 
 	if(msjPersonaje=="Deva"){
 
 		miPersonaje="Reni";
+	
 		this.scene.start('Mapa_Final');
 		
 		}
 		else if(msjPersonaje=="Reni"){
 		
 			miPersonaje="Deva";
+			
 			this.scene.start('Mapa_Final');
 		
 			}
@@ -820,7 +838,6 @@ class Scene5 extends Phaser.Scene {
 
 	create() {
 
-alert(miPersonaje);
 		nivel = 'Mapa_Final';
 
 		this.vida = 7;
@@ -1305,19 +1322,27 @@ alert(miPersonaje);
 		this.physics.add.overlap(this.deva, this.laserv12);
 
 
-
-
 		//Para que la camara no se pasa del mapa
 		this.cameras.main.setBounds(0, 0, this.mapa.widthInPixels, this.mapa.heightInPixels);
 		//La camara sigue a Reni
 
 		if(miPersonaje==="Deva"){
 			this.cameras.main.startFollow(this.deva);
+			this.minimap = this.cameras.add(600, 0,400, 200).setZoom(0.4).setName('mini');
+			this.minimap.scrollX = 1600;
+			this.minimap.scrollY = 300;
+			this.minimap.startFollow(this.reni);
 		}else if(miPersonaje==="Reni"){
 
 			this.cameras.main.startFollow(this.reni);
+			this.minimap = this.cameras.add(600, 0,400, 200).setZoom(0.4).setName('mini');
+			this.minimap.scrollX = 1600;
+			this.minimap.scrollY = 300;
+			this.minimap.startFollow(this.deva);
 		}
 		
+
+
 
 		//Texto Vida siga la cámara
 		this.textVida.setScrollFactor(0);
@@ -1754,6 +1779,8 @@ if(miPersonaje==="Deva"){
 		this.deva.anims.play('caminarDeva', true);
 		this.deva.flipX = true;
 position.send(JSON.stringify("Izquierda_Deva"));
+
+
 		if (!this.sonidoDeva.isPlaying)
 			this.sonidoDeva.play();
 		//this.sonidoDeva.play();
@@ -1766,10 +1793,12 @@ position.send(JSON.stringify("Derecha_Deva"));
 		if (!this.sonidoDeva.isPlaying)
 			this.sonidoDeva.play();
 	}
-	else if (this.cursors.right.isUp) {
+	else {
 		this.deva.setVelocityX(0);
 		this.deva.anims.play('esperaDeva', true);
 		position.send(JSON.stringify("Stop_Deva"));
+		exactDevaPositionX.send(JSON.stringify(this.deva.x));
+exactDevaPositionY.send(JSON.stringify(this.deva.y));
 		this.sonidoDeva.stop();
 	}
 
@@ -1788,6 +1817,18 @@ position.send(JSON.stringify("Derecha_Deva"));
 movReni=JSON.parse(message.data);
 
 	}
+
+
+	exactReniPositionX.onmessage=function(message){
+
+		x=JSON.parse(message.data);
+		
+		}
+		exactReniPositionY.onmessage=function(message){
+	
+			y=JSON.parse(message.data);
+			
+			}
 
 		if (movReni==="Izquierda_Reni") {
 		this.reni.setVelocityX(-300);
@@ -1809,6 +1850,8 @@ movReni=JSON.parse(message.data);
 		else if(movReni==="Stop_Reni"){
 		this.reni.setVelocityX(0);
 		this.reni.anims.play('esperaReni', true);
+		this.reni.x=x;
+		this.reni.y=y;
 		this.sonidoReni.stop();
 		}
 		
@@ -1887,6 +1930,16 @@ position.onmessage=function(message){
 movDeva=JSON.parse(message.data);
 
 }
+exactDevaPositionX.onmessage=function(message){
+
+	x=JSON.parse(message.data);
+	
+	}
+	exactDevaPositionY.onmessage=function(message){
+
+		y=JSON.parse(message.data);
+		
+		}
 
 //Controles Deva
 if (movDeva==="Izquierda_Deva") {
@@ -1912,7 +1965,8 @@ else if (movDeva==="Derecha_Deva") {
 else if (movDeva==="Stop_Deva") {
 	this.deva.setVelocityX(0);
 	this.deva.anims.play('esperaDeva', true);
-
+	this.deva.x=x;
+	this.deva.y=y;
 	this.sonidoDeva.stop();
 }
 
@@ -1954,6 +2008,8 @@ else {
 	this.reni.setVelocityX(0);
 	this.reni.anims.play('esperaReni', true);
 	position.send(JSON.stringify("Stop_Reni"));
+	exactReniPositionX.send(JSON.stringify(this.reni.x));
+exactReniPositionY.send(JSON.stringify(this.reni.y));
 	this.sonidoReni.stop();
 }
 
@@ -2072,6 +2128,7 @@ class Scene7 extends Phaser.Scene {
 	}
 
 	update(time, delta) {
+
 
 		tiempoRespuesta += delta;
 
@@ -2223,6 +2280,11 @@ var id = null;
 var connection = new WebSocket('ws://127.0.0.1:8080/chat');
 var position = new WebSocket('ws://127.0.0.1:8080/position');
 var player = new WebSocket('ws://127.0.0.1:8080/playerSelection');
+var exactDevaPositionX=new WebSocket('ws://127.0.0.1:8080/exactDevaPositionX');
+var exactDevaPositionY=new WebSocket('ws://127.0.0.1:8080/exactDevaPositionY');
+var exactReniPositionX=new WebSocket('ws://127.0.0.1:8080/exactReniPositionX');
+var exactReniPositionY=new WebSocket('ws://127.0.0.1:8080/exactReniPositionY');
+var online = new WebSocket('ws://127.0.0.1:8080/online');
 
 var jugadores = new Phaser.Game({
 
