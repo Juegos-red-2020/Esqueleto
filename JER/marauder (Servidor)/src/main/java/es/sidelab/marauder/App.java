@@ -27,6 +27,16 @@ public class App implements WebSocketConfigurer{
 		.setAllowedOrigins("*");
 		registry.addHandler(createPlayerSelectHandler(), "/playerSelection")
 		.setAllowedOrigins("*");
+		registry.addHandler(createExactDevaPosXHandler(), "/exactDevaPositionX")
+		.setAllowedOrigins("*");
+		registry.addHandler(createExactDevaPosYHandler(), "/exactDevaPositionY")
+		.setAllowedOrigins("*");
+		registry.addHandler(createExactReniPosXHandler(), "/exactReniPositionX")
+		.setAllowedOrigins("*");
+		registry.addHandler(createExactReniPosYHandler(), "/exactReniPositionY")
+		.setAllowedOrigins("*");
+		registry.addHandler(createPlayerOnlineHandler(), "/online")
+		.setAllowedOrigins("*");
 	}
 	
 	@Bean
@@ -41,5 +51,26 @@ public class App implements WebSocketConfigurer{
 	@Bean
 	public PlayerSelectHandler createPlayerSelectHandler() {
 		return new PlayerSelectHandler();
+	}
+	@Bean
+	public ExactDevaPosXHandler createExactDevaPosXHandler() {
+		return new ExactDevaPosXHandler();
+	}
+	@Bean
+	public ExactDevaPosYHandler createExactReniPosYHandler() {
+		return new ExactDevaPosYHandler();
+	}
+	
+	@Bean
+	public ExactReniPosXHandler createExactReniPosXHandler() {
+		return new ExactReniPosXHandler();
+	}
+	@Bean
+	public ExactReniPosYHandler createExactDevaPosYHandler() {
+		return new ExactReniPosYHandler();
+	}
+	@Bean
+	public PlayerOnlineHandler createPlayerOnlineHandler() {
+		return new PlayerOnlineHandler();
 	}
 }
