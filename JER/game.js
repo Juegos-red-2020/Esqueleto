@@ -131,6 +131,9 @@ class Scene0 extends Phaser.Scene {
             $("#aceptar").hide();
             $("#nombre").hide();
             $("#password").hide();
+            $("#chat").show();
+			$("#message").show();
+			$("#send-btn").show();
             lastTimeConnected=new Date().getTime();
 
             loginCompleto = true;
