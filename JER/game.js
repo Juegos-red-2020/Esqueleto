@@ -2055,9 +2055,17 @@ class Scene6 extends Phaser.Scene {
 	create() {
 		this.fondo = this.physics.add.staticSprite(config.width / 2, config.height / 2, 'Fondo');
 		this.titulo = this.physics.add.staticSprite(config.width / 2, config.height / 8, 'Titulo');
-		this.dis = this.physics.add.staticSprite(config.width / 4, config.height / 2, 'Dis');
-		this.prog = this.physics.add.staticSprite(config.width / 2, config.height / 1.5, 'Prog');
-		this.disNiveles = this.physics.add.staticSprite(config.width * 3 / 4, config.height / 2.1, 'DisN');
+		this.add.text(config.width/5,config.height/4.2,"ASSETS: ",{ font: '30px fontGame', fill: '#fff' });
+		this.add.text(config.width/5,config.height/3.3,"https://www.artstation.com/artwork/RYJONX",{ font: '20px fontGame', fill: '#fff' });
+		this.add.text(config.width/5,config.height/2.9,"https://www.artstation.com/artwork/1nOAxX",{ font: '20px fontGame', fill: '#fff' });
+		this.add.text(config.width/5,config.height/2.5,"https://www.artstation.com/artwork/baDzPv",{ font: '20px fontGame', fill: '#fff' });
+		this.add.text(config.width/5,config.height/2.2,"https://imgur.com/r/PixelArt/yALAtR8",{ font: '20px fontGame', fill: '#fff' });
+		this.add.text(config.width/5,config.height/2,"https://runwthewolves.tumblr.com/post/168756860046/tiny-pixel-\nlever-for-my-game-the-wishgranter",{ font: '20px fontGame', fill: '#fff' });
+		this.add.text(config.width/5,config.height/1.7,"https://www.artstation.com/artwork/L29awv",{ font: '20px fontGame', fill: '#fff' });
+		this.add.text(config.width/5,config.height/1.5,"EQUIPO DE MARAUDER: ",{ font: '30px fontGame', fill: '#fff' });
+		this.add.text(config.width/5,config.height/1.35,"DISEÑO: Karim Castillo, Miguel Gálvez\n\nPROGRAMACIÓN: Miguel Gálvez, Karim Castillo,\n José Pablo García, Diego Penedo\n\nNIVELES: Diego Penedo",{ font: '20px fontGame', fill: '#fff' });
+
+
 		this.musica = this.sound.add('M_Game_Over');
 		this.musicaBotones = this.sound.add('M_Botones');
 		this.salir = this.physics.add.staticSprite(config.width / 12, config.height / 10, 'Salir');
