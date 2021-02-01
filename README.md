@@ -124,7 +124,7 @@ Tanto en el nivel principal como en el tutorial se puede ver a ambos personajes 
 
 ![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/GameOver.PNG>)
 
-Pantalla que aparece cuando el personaje se quedan sin vidas (tienen 3 entre los dos personajes). Permite volver al menú o reintentar el nivel.
+Pantalla que aparece cuando el personaje se quedan sin vidas (tienen 7 entre los dos personajes en el juego, 3 en el tutorial). Permite volver al menú o reintentar el nivel.
 
 
 
@@ -183,11 +183,6 @@ Una vez esté Deva en Pl6 puede subir cuidadosamente hasta arriba, donde se encu
 
 
 # Referencias
-
-Pturm
-
-https://www.artstation.com/artwork/Er9a2
-
 
 
 Items
