@@ -122,7 +122,7 @@ Tanto en el nivel principal como en el tutorial se puede ver a ambos personajes 
 
 >Game Over:
 
-![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/GameOver.png>)
+![alt text](<https://github.com/Juegos-red-2020/Esqueleto/blob/main/Pantallazos-Readme/GameOver.PNG>)
 
 Pantalla que aparece cuando el personaje se quedan sin vidas (tienen 3 entre los dos personajes). Permite volver al menú o reintentar el nivel.
 
