@@ -282,6 +282,7 @@ A continuación se muetra un ejemplo de clase genérica. Esta clase crea una ses
 
 ![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/Clase%20Gen%C3%A9rica.png)
 
+
 Esta estructura se aplica a una diversidad de clases:
 
 ![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/ClasesServidor.png)
@@ -314,6 +315,7 @@ Position implementa positionHandler, player PlayerSelection y online playerOnlin
 
 Dentro del cliente, se han utilizado los sigientes métodos que hacen uso del servidor:
 
+
 ![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/JugadorConectado.png)
 
 Jugador conectado: Comunica si hay otra persona conectada en la selección de personaje.
@@ -341,7 +343,7 @@ MovimientoEnviado: Envía la acción que ha sido realizada
 
 MovimientoRecibido: Guarda el movimiento en un mensaje
 
-![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/MovimientoRecibidoEjecutado.png)
+![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/MovimientoRecibidoEjecutado2.png)
 
 MovimientoRecibidoEjecutado: Comprueba el contenido en el mensaje y realiza la acción indicada.
 
