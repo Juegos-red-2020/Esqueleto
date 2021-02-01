@@ -278,6 +278,10 @@ https://www.artstation.com/artwork/L29awv
 
 # Protocolo Websockets
 
+>Diagrama de clases
+
+![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/Diagrama%20Clases%20Fase%204.png)
+
 A continuación se muetra un ejemplo de clase genérica. Esta clase crea una sesión y contiene métodos capaces de recibir un mensaje y enviar mensajes recibidos a todo el mundo que no tenga la misma sesión.
 
 ![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/Clase%20Gen%C3%A9rica.png)
@@ -310,7 +314,7 @@ Estas clases se han implementado en el cliente mediante los siguientes websocket
 
 ![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/WebsocketsCliente.png)
 
-Position implementa positionHandler, player PlayerSelection y online playerOnlineHandler.
+Position implementa positionHandler, player PlayerSelectHandler y online playerOnlineHandler.
 
 
 Dentro del cliente, se han utilizado los sigientes métodos que hacen uso del servidor:
