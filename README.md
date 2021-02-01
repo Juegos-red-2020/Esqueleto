@@ -13,7 +13,7 @@ TRELLO: https://trello.com/invite/b/7TDbjcXg/570ec36ceab6d6e421ffdf338bea6fb6/ju
 
 PLATAFORMA:  PC
 
-VERSIÓN: 1.0
+VERSIÓN: 3.0
 
 SINOPSIS DEL JUEGO: Dos exploradores se encuentran atrapados en una nave abandonada. A medida que avanzan en su búsqueda de una salida, una serie de peligros irán surgiendo y deberán colaborar para superar los obstáculos y buscar una salida.
 
