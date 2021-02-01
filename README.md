@@ -271,6 +271,7 @@ https://www.artstation.com/artwork/L29awv
 ![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/P_8_Juego.PNG>)
 
 8.    Abrir Juego.
+
 ![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/P_9_Login.PNG>)
 
 ![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/P_10_Login.PNG>)
