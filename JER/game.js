@@ -7,6 +7,8 @@ var pSeleccionado=false;
 	var y;
 	var x;
 	var conectado=false;
+
+
 class Scene0 extends Phaser.Scene {
 
 
@@ -133,8 +135,10 @@ class Scene0 extends Phaser.Scene {
 		$("#nombre").show();
 		$("#password").show();
 
-		$("#aceptar").click(function() {
+var nombrePassword=this.add.text(config.width/3.5,config.height/2,"INTRODUCE NOMBRE Y CONTRASEÑA",{ font: '30px fontGame', fill: '#fff' });
 
+		$("#aceptar").click(function() {
+nombrePassword.destroy();
 			$("#aceptar").hide();
 			$("#nombre").hide();
 			$("#password").hide();
@@ -235,7 +239,7 @@ class Scene1 extends Phaser.Scene {
 		this.titulo = this.physics.add.staticSprite(config.width / 2, config.height / 8, 'Titulo');
 		this.jugar = this.physics.add.staticSprite(config.width / 2, config.height / 2.2, 'Jugar');
 		this.tutorial = this.physics.add.staticSprite(config.width / 2, config.height / 1.7, 'Tutorial');
-		this.creditos = this.physics.add.staticSprite(config.width / 2, config.height / 1.35, 'Creditos');
+		this.creditos = this.physics.add.staticSprite(config.width / 2, config.height / 1.4, 'Creditos');
 		this.salirJuego = this.physics.add.staticSprite(config.width / 2, config.height / 1.15, 'SalirJuego');
 		this.musica = this.sound.add('M_Inicio', { volume: 0.3 });
 		this.musicaBotones = this.sound.add('M_Botones');
@@ -290,13 +294,13 @@ class Scene1 extends Phaser.Scene {
 
 		this.creditos.on('pointerover', function() {
 
-			this.creditos = this.physics.add.staticSprite(config.width / 2, config.height / 1.35, 'CreditosA');
+			this.creditos = this.physics.add.staticSprite(config.width / 2, config.height / 1.4, 'CreditosA');
 			this.musicaBotones.play();
 		}, this);
 
 		this.creditos.on('pointerout', function() {
 
-			this.creditos = this.physics.add.staticSprite(config.width / 2, config.height / 1.35, 'Creditos');
+			this.creditos = this.physics.add.staticSprite(config.width / 2, config.height / 1.4, 'Creditos');
 
 		}, this);
 		this.creditos.on('pointerdown', function() {
@@ -359,7 +363,7 @@ class Scene2 extends Phaser.Scene {
 		this.musicaBotones = this.sound.add('M_Botones');
 		this.musica = this.sound.add('M_Personajes', { volume: 0.3 });
 		this.musica.play();
-//this.aviso=this.add.text(this)
+
 		this.anims.create({
 			key: 'caminarDeva',
 			frames: this.anims.generateFrameNumbers('Deva'),
@@ -474,14 +478,14 @@ if(pSeleccionado===true){
 	if(msjPersonaje=="Deva"){
 
 		miPersonaje="Reni";
-	
+		this.musica.stop();
 		this.scene.start('Mapa_Final');
 		
 		}
 		else if(msjPersonaje=="Reni"){
 		
 			miPersonaje="Deva";
-			
+			this.musica.stop();
 			this.scene.start('Mapa_Final');
 		
 			}
@@ -523,17 +527,7 @@ class Scene3 extends Phaser.Scene {
 			this.scene.start('Inicio');
 
 
-		} else if (this.input.keyboard.addKey('D').isDown || this.input.keyboard.addKey('d').isDown) {
-
-			if (nivel === 'Mapa') {
-				this.musica.stop();
-				this.scene.start('Mapa');
-			} else if (nivel === 'Mapa_Final') {
-				this.musica.stop();
-				this.scene.start('Mapa_Final');
-			}
-
-		}
+		} 
 
 
 	}
@@ -1982,8 +1976,6 @@ if (movDeva==="Salto_Deva") {
 	//this.sonidoDeva.stop();
 	//this.sonidoSalto.play();
 }
-
-
 
 
 //Controles de Reni
