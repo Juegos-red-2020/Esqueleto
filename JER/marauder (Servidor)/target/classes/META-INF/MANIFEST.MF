@@ -5,6 +5,6 @@ Implementation-Title: marauder
 Implementation-Version: 0.0.1-SNAPSHOT
 Implementation-Vendor-Id: es.sidelab
 Implementation-Vendor: Pivotal Software, Inc.
-Implementation-URL: http://www.example.com
+Implementation-URL: http://localhost:8080
 Created-By: Maven Integration for Eclipse
 
