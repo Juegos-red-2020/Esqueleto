@@ -219,6 +219,10 @@ Palanca
 https://runwthewolves.tumblr.com/post/168756860046/tiny-pixel-lever-for-my-game-the-wishgranter
 
 
+Personaje (asset modificado)
+
+https://www.artstation.com/artwork/L29awv
+
 
 # LICENCIAS MUSICA
 
@@ -271,3 +275,84 @@ https://runwthewolves.tumblr.com/post/168756860046/tiny-pixel-lever-for-my-game-
 
 ![alt text](<https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/P_10_Login.PNG>)
 
+
+# Protocolo Websockets
+
+A continuación se muetra un ejemplo de clase genérica. Esta clase crea una sesión y contiene métodos capaces de recibir un mensaje y enviar mensajes recibidos a todo el mundo que no tenga la misma sesión.
+
+![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/Clase%20Gen%C3%A9rica.png)
+
+Esta estructura se aplica a una diversidad de clases:
+
+![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/ClasesServidor.png)
+
+ExactDevaPosXHandler: Maneja la posición X del personaje llamado Deva.
+
+ExactDevaPosYHandler: Maneja la posición Y del personaje llamado Deva.
+
+ExactReniPosXHandler: Maneja la posición X del personaje llamado Reni.
+
+ExactReniPosYHandler: Maneja la posición Y del personaje llamado Reni.
+
+Player y  PlayerController son clases del API.
+
+PlayerOnlineHandler: Envía un mensaje al entrar en la pantalla de selección de personaje, no se puede empezar a jugar hasta que no haya 2 jugadores.
+
+PlayerSelectHandler: Envía un mensaje al seleccionar uno de los personaje. Informa del personaje seleccionado para que el otro cliente elija al personaje no seleccionado.
+
+PositionHandler: Envía los movimientos que ha realizado el personaje.
+
+chatHandler: Maneja el chat.
+
+
+Estas clases se han implementado en el cliente mediante los siguientes websockets
+
+![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/WebsocketsCliente.png)
+
+Position implementa positionHandler, player PlayerSelection y online playerOnlineHandler.
+
+
+Dentro del cliente, se han utilizado los sigientes métodos que hacen uso del servidor:
+
+![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/JugadorConectado.png)
+
+Jugador conectado: Comunica si hay otra persona conectada en la selección de personaje.
+
+![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/Conectado%20Jugador.png)
+
+ConectadoJugador: Permite que comience la escena cuando estén ambos jugadores conectados.
+
+
+![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/DevaSeleccionado.png)
+
+![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/ReniSeleccionado.png)
+
+Estas funciones asignan el personaje que el jugador ha seleccionado.
+
+![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/MensajePersonajeRecibido.png)
+
+MensajePersonajeRecibido: Comprueba el mensaje recibido que indica el personaje que ha seleccionado el otro jugador y asigna el personaje contrario.
+
+![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/MovimientoEnviado.png)
+
+MovimientoEnviado: Envía la acción que ha sido realizada
+
+![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/MovimientoRecibido2.png)
+
+MovimientoRecibido: Guarda el movimiento en un mensaje
+
+![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/MovimientoRecibidoEjecutado.png)
+
+MovimientoRecibidoEjecutado: Comprueba el contenido en el mensaje y realiza la acción indicada.
+
+![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/PosicionEnviada.png)
+
+PosicionEnviada: Envía la posición mientras el personaje se encuentre parado
+
+![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/Posici%C3%B3nRecibida.png)
+
+PosicionRecibida: Recibe el mensaje con la posición del personaje parado
+
+![alt text](https://github.com/Juegos-red-2020/Marauder_02/blob/main/Pantallazos-Readme/Posici%C3%B3nRecibidaEjecutada.png)
+
+PosicionRecibidaEjecutada: Si recibe que el personaje está parado, lo coloca en la posición recibida
